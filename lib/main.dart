@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:utool/login/login.dart';
+import 'package:utool/reviewpage/reviewpage.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: LoginPage(),
+    return const MaterialApp(
+      title: 'My App',
+      home: ReviewPage(),
     );
   }
 }
