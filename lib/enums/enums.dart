@@ -1,0 +1,3 @@
+enum UseType { DELIVERY, PICK_UP, STORE_USE_ONLY }
+
+enum Intervals { HOURLY, DAILY, WEEKLY, MONTHLY }

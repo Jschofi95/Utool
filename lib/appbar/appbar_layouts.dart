@@ -9,7 +9,7 @@ class MyAppBar {
                  a menu IconButton on the left side of the app bar as well
                  as a search button on the left hand side.
                  The title is centered within the app bar.
-  */ 
+  */
   AppBar homeAppBarLayout() {
     return AppBar(
       title: const Text("UTool"),
@@ -20,6 +20,7 @@ class MyAppBar {
       ),
       actions: <Widget>[
         IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
+        IconButton(onPressed: () {}, icon: const Icon(Icons.list)), // Sort and filter menus will be here
       ],
       backgroundColor: Colors.orangeAccent,
       shape: const RoundedRectangleBorder(

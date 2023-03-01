@@ -1,7 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:utool/enums/enums.dart';
 
-class MyCard extends StatelessWidget {
-  const MyCard({super.key});
+class CardData extends StatelessWidget {
+  final String type;
+  final String imgLink;
+  final String brand;
+  final String price;
+  final Intervals rentPriceInterval;
+  final String condition;
+  final UseType useType;
+  final String address;
+  final String deliveryFee;
+
+  const CardData({
+    super.key,
+    required this.type,
+    required this.imgLink,
+    required this.brand,
+    required this.price,
+    required this.rentPriceInterval,
+    required this.condition,
+    required this.useType,
+    required this.address,
+    required this.deliveryFee,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -11,9 +33,9 @@ class MyCard extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             ListTile(
-              leading: Image.asset('assets/woodchipper_placeholder.png'),
-              title: Text('Woodchipper'),
-              subtitle: Text('\$100 per day'),
+              leading: Image.asset(imgLink),
+              title: Text(type),
+              subtitle: Text('\$$price ${rentPriceInterval.name}'),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
