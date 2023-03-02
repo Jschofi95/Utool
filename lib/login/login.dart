@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:utool/homepage/homepage.dart';
+import 'package:utool/login/accCreate.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:utool/login/accRecover.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -56,6 +59,8 @@ class _LoginPageState extends State<LoginPage> {
             TextButton(
               onPressed: () {
                 // TODO FORGOT PASSWORD SCREEN GOES HERE
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (_) => AccountRecoverPage()));
               },
               child: const Text(
                 'Forgot Password',
@@ -81,7 +86,16 @@ class _LoginPageState extends State<LoginPage> {
             const SizedBox(
               height: 130,
             ),
-            const Text('New User? Create Account')
+            TextButton(
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (_) => AccountCreationPage()));
+              },
+              child: const Text(
+                'New User? Create Account!',
+                style: TextStyle(color: Colors.blue, fontSize: 15),
+              ),
+            ),
           ],
         ),
       ),
