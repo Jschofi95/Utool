@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:utool/message/message.dart';
+import 'package:utool/userprofile/userprofile.dart';
 import 'rent.dart';
 //import 'payment.dart';
 
@@ -19,19 +20,19 @@ class ReviewPage extends StatelessWidget {
           //Image.asset('picture/p1.jpg'),
 
           Text(
-            'The example here is home depo',
-            style: TextStyle(fontSize: 28, color: Colors.red),
+            'wood chipper 3 in. 7 HP Gas Powered Kohler Engine Direct Drive Certified Commercial Chipper Shredder with Trailer Tow Hitch',
+            style: TextStyle(fontSize: 14, color: Colors.red),
           ),
         ],
       )),
       bottomNavigationBar: BottomNavigationBar(
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.message),
             label: 'Message',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
+            icon: Icon(Icons.payment),
             label: 'Rent',
           ),
         ],
@@ -40,7 +41,7 @@ class ReviewPage extends StatelessWidget {
           if (index == 0) {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => Message()),
+              MaterialPageRoute(builder: (context) => UserProfile()),
             );
           } else {
             Navigator.push(

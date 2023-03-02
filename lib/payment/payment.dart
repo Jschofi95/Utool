@@ -14,7 +14,8 @@ class PaymentPage extends State<Payment> {
       appBar: AppBar(
         title: Text('Detail for the payment'),
       ),
-      body: Text('You should pay: ... '),
+      body: Text('total Price: 521'),
+
       //It should connect to message system. Have no idea yet.
     );
   }

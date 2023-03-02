@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:utool/enums/enums.dart';
+import 'package:utool/reviewpage/reviewpage.dart';
 
 class CardData extends StatelessWidget {
   final String type;
@@ -41,14 +42,18 @@ class CardData extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
                 TextButton(
-                  child: const Text('Rent'),
-                  onPressed: () {/* ... */},
+                  child: const Text('Detail'),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (_) => ReviewPage()));
+                  },
                 ),
-                const SizedBox(width: 8),
+
+                /*const SizedBox(width: 8),
                 TextButton(
                   child: const Text('Message'),
                   onPressed: () {/* ... */},
-                ),
+                ),*/
                 const SizedBox(width: 8),
               ],
             ),

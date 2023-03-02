@@ -8,7 +8,7 @@ class Rent extends StatefulWidget {
   RentPage createState() => RentPage();
 }
 
-class RentPage extends State<Payment> {
+class RentPage extends State<Rent> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
