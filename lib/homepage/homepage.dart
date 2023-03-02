@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:utool/card/card_data.dart';
+import 'package:utool/item/item_data.dart';
+import 'package:utool/card/card_layout.dart';
 import 'package:utool/appbar/appbar_layouts.dart';
 import 'package:utool/enums/enums.dart';
 
@@ -11,8 +12,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<CardData> items = [
-    const CardData(
+  List<ItemData> items = [
+    const ItemData(
         type: "Wood Chipper",
         imgLink: "assets/woodchipper_placeholder.png",
         brand: "Sun-O-Co",
@@ -22,7 +23,7 @@ class _HomePageState extends State<HomePage> {
         useType: UseType.PICK_UP,
         address: "123 Side St, Tuscaloosa, AL, 35402",
         deliveryFee: "250"),
-    const CardData(
+    const ItemData(
         type: "Stump Grinder",
         imgLink: "assets/stump_grinder.jpg",
         brand: "Carlton",
@@ -42,16 +43,7 @@ class _HomePageState extends State<HomePage> {
           ? ListView.builder(
               itemCount: items.length,
               itemBuilder: (context, index) {
-                return CardData(
-                    type: items[index].type,
-                    imgLink: items[index].imgLink,
-                    brand: items[index].brand,
-                    price: items[index].price,
-                    rentPriceInterval: items[index].rentPriceInterval,
-                    condition: items[index].condition,
-                    useType: items[index].useType,
-                    address: items[index].address,
-                    deliveryFee: items[index].deliveryFee);
+                return CardLayout(itemData: items[index]);
               },
             )
           : const Center(

@@ -1,29 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:utool/item/item_data.dart';
 import 'package:utool/enums/enums.dart';
 import 'package:utool/item_details/item_detail_page.dart';
 
-class CardData extends StatelessWidget {
-  final String type;
-  final String imgLink;
-  final String brand;
-  final String price;
-  final Intervals rentPriceInterval;
-  final String condition;
-  final UseType useType;
-  final String address;
-  final String deliveryFee;
-
-  const CardData({
+class CardLayout extends StatelessWidget {
+  final ItemData itemData;
+  const CardLayout({
     super.key,
-    required this.type,
-    required this.imgLink,
-    required this.brand,
-    required this.price,
-    required this.rentPriceInterval,
-    required this.condition,
-    required this.useType,
-    required this.address,
-    required this.deliveryFee,
+    required this.itemData,
   });
 
   @override
@@ -34,9 +18,10 @@ class CardData extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             ListTile(
-              leading: Image.asset(imgLink),
-              title: Text(type),
-              subtitle: Text('\$$price ${rentPriceInterval.name}'),
+              leading: Image.asset(itemData.imgLink),
+              title: Text(itemData.type),
+              subtitle: Text(
+                  '\$${itemData.price} ${itemData.rentPriceInterval.name}'),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
@@ -44,8 +29,12 @@ class CardData extends StatelessWidget {
                 TextButton(
                   child: const Text('Detail'),
                   onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (_) => ItemDetails()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (_) => ItemDetails(
+                                  item: itemData,
+                                )));
                   },
                 ),
 

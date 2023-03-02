@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:utool/item/item_data.dart';
+import 'package:utool/card/card_layout.dart';
 import 'package:utool/message/message.dart';
 import 'package:utool/userprofile/userprofile.dart';
 import 'rent.dart';
 //import 'payment.dart';
 
 class ItemDetails extends StatelessWidget {
-  const ItemDetails({Key? key}) : super(key: key);
+  final ItemData item; // Data for item to be displayed
+
+  const ItemDetails({
+    Key? key,
+    required this.item,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,36 +20,12 @@ class ItemDetails extends StatelessWidget {
       appBar: AppBar(
         title: Text('Detail'),
       ),
-      body: Center(
+      body: SafeArea(
         child: Column(
-          children: const <Widget>[],
+          children: const <Widget>[
+            Text("Place holder data"),
+          ],
         ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.message),
-            label: 'Message',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.payment),
-            label: 'Rent',
-          ),
-        ],
-        currentIndex: 0,
-        onTap: (index) {
-          if (index == 0) {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => UserProfile()),
-            );
-          } else {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => Rent()),
-            );
-          }
-        },
       ),
     );
   }
