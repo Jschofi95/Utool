@@ -9,7 +9,11 @@ class MyAppBar {
                  a menu IconButton on the left side of the app bar as well
                  as a search button on the left hand side.
                  The title is centered within the app bar.
+    Contributors:
+      Aaron Schofield
+        - Created homeAppBarLayout
   */
+
   AppBar homeAppBarLayout() {
     return AppBar(
       title: const Text("UTool"),
