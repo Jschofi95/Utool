@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:utool/enums/enums.dart';
-import 'package:utool/reviewpage/reviewpage.dart';
+import 'package:utool/item_details/item_detail_page.dart';
 
 class CardData extends StatelessWidget {
   final String type;
@@ -45,7 +45,7 @@ class CardData extends StatelessWidget {
                   child: const Text('Detail'),
                   onPressed: () {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (_) => ReviewPage()));
+                        MaterialPageRoute(builder: (_) => ItemDetails()));
                   },
                 ),
 
