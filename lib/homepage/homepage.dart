@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:utool/card/my_card.dart';
+import 'package:utool/card/card_data.dart';
 import 'package:utool/appbar/appbar_layouts.dart';
 import 'package:utool/enums/enums.dart';
 
