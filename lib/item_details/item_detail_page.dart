@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:utool/item/item_data.dart';
-import 'package:utool/card/card_layout.dart';
-import 'package:utool/message/message.dart';
-import 'package:utool/userprofile/userprofile.dart';
-import 'rent.dart';
-//import 'payment.dart';
 
 class ItemDetails extends StatelessWidget {
   final ItemData item; // Data for item to be displayed
@@ -16,14 +11,32 @@ class ItemDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Detail'),
-      ),
-      body: SafeArea(
-        child: Column(
-          children: const <Widget>[
-            Text("Place holder data"),
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          foregroundColor: Colors.white,
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          title: const Text('Details'),
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+          actions: [
+            IconButton(
+                onPressed: () {},
+                icon: Icon(
+                  Icons.favorite,
+                  color: Colors.redAccent,
+                  size: 30,
+                ))
+          ],
+        ),
+        body: Column(
+          children: <Widget>[
+            Text(item.type),
           ],
         ),
       ),
