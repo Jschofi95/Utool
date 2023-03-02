@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MyAppBar {
+  
   /*
     Method name: homeAppBarLayout
     Parameters: None
@@ -13,7 +14,6 @@ class MyAppBar {
       Aaron Schofield
         - Created homeAppBarLayout
   */
-
   AppBar homeAppBarLayout() {
     return AppBar(
       title: const Text("UTool"),

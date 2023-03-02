@@ -1,5 +1,14 @@
 import 'package:utool/enums/enums.dart';
 
+/*
+    Class name: ItemData
+    Parameters: None
+    Description: Holds all data and methods for an individual item.
+    Contributors:
+      Aaron Schofield
+        - Created ItemData with a few basic variables
+  */
+
 class ItemData {
   final String type;
   final String imgLink;
