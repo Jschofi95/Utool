@@ -1,48 +1,44 @@
 import 'package:flutter/material.dart';
-import 'package:utool/message/message.dart';
-import 'package:utool/userprofile/userprofile.dart';
-import 'rent.dart';
-//import 'payment.dart';
+import 'package:utool/item/item_data.dart';
 
 class ItemDetails extends StatelessWidget {
-  const ItemDetails({Key? key}) : super(key: key);
+  final ItemData item; // Data for item to be displayed
+
+  const ItemDetails({
+    Key? key,
+    required this.item,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Detail'),
-      ),
-      body: Center(
-        child: Column(
-          children: const <Widget>[],
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          foregroundColor: Colors.white,
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          title: const Text('Details'),
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+          actions: [
+            IconButton(
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.favorite,
+                  color: Colors.redAccent,
+                  size: 30,
+                ))
+          ],
         ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.message),
-            label: 'Message',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.payment),
-            label: 'Rent',
-          ),
-        ],
-        currentIndex: 0,
-        onTap: (index) {
-          if (index == 0) {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => UserProfile()),
-            );
-          } else {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => Rent()),
-            );
-          }
-        },
+        body: Column(
+          children: <Widget>[
+            Text(item.type),
+          ],
+        ),
       ),
     );
   }
