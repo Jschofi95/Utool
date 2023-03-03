@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:utool/userprofile/userprofile.dart';
 
-class MyBottomAppBar {
+class MyBottomAppBar extends StatelessWidget {
   /*
     Method name: bottomppBarLayout
     Parameters: None
@@ -11,7 +12,9 @@ class MyBottomAppBar {
         - Created bottomAppBarLayout
   */
 
-  BottomAppBar bottomAppBarLayout() {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
     return BottomAppBar(
       height: 50.0,
       color: const Color.fromARGB(0, 255, 255, 255),
@@ -36,7 +39,10 @@ class MyBottomAppBar {
                   Text("Profile"),
                 ])),
             ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (_) => UserProfile()));
+                },
                 style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.purple,
                     padding:
@@ -65,20 +71,21 @@ class MyBottomAppBar {
                   ),
                   Text("History"),
                 ])),
-            /*
-            IconButton(
-              color: Colors.white,
-              tooltip: 'Lend',
-              icon: const Icon(Icons.add_box_rounded),
-              onPressed: () {},
-            ),
-            IconButton(
-              color: Colors.white,
-              tooltip: 'Rent History',
-              icon: const Icon(Icons.auto_stories_rounded),
-              onPressed: () {},
-            ),
-            */
+
+            // IconButton(
+            //   color: Colors.white,
+            //   tooltip: 'Lend',
+            //   icon: const Icon(Icons.add_box_rounded),
+            //   onPressed: () {
+            //     Navigator.push(context, route)
+            //   },
+            // ),
+            // IconButton(
+            //   color: Colors.white,
+            //   tooltip: 'Rent History',
+            //   icon: const Icon(Icons.auto_stories_rounded),
+            //   onPressed: () {},
+            // ),
           ],
         ),
       ),

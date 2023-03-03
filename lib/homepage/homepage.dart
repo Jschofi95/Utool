@@ -66,7 +66,7 @@ class _HomePageState extends State<HomePage> {
         child: const Text('Lend'),
       ),
       */
-      bottomNavigationBar: MyBottomAppBar().bottomAppBarLayout(),
+      bottomNavigationBar: MyBottomAppBar(),
     );
   }
 }
