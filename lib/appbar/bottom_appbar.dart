@@ -4,29 +4,68 @@ class MyBottomAppBar {
   /*
     Method name: bottomppBarLayout
     Parameters: None
-    Description: The layout of the app bar specifically for the home page.
-                 This app bar does not have a back button. Instead, it contains
-                 a menu IconButton on the left side of the app bar as well
-                 as a search button on the left hand side.
-                 The title is centered within the app bar.
+    Description: Simple bottom nav bar for homepage. Basically everything is 
+    subject to change, this is just a first attempt
     Contributors:
-      Aaron Schofield
-        - Created homeAppBarLayout
+      Dylan Brown
+        - Created bottomAppBarLayout
   */
 
   BottomAppBar bottomAppBarLayout() {
     return BottomAppBar(
-      color: const Color.fromARGB(255, 184, 167, 16),
+      height: 50.0,
+      color: const Color.fromARGB(0, 255, 255, 255),
       child: IconTheme(
-        data: const IconThemeData(color: Color.fromARGB(255, 184, 167, 16)),
+        data: const IconThemeData(color: Color.fromARGB(255, 10, 29, 136)),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            IconButton(
-              color: Colors.white,
-              tooltip: 'Account',
-              icon: const Icon(Icons.account_circle_outlined),
-              onPressed: () {},
-            ),
+            ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.purple,
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+                    textStyle: const TextStyle(
+                        fontSize: 12, fontWeight: FontWeight.bold)),
+                child: Column(children: const [
+                  Icon(
+                    Icons.account_circle_outlined,
+                    color: Colors.white,
+                  ),
+                  Text("Profile"),
+                ])),
+            ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.purple,
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+                    textStyle: const TextStyle(
+                        fontSize: 12, fontWeight: FontWeight.bold)),
+                child: Column(children: const [
+                  Icon(
+                    Icons.add_box_rounded,
+                    color: Colors.white,
+                  ),
+                  Text("Lend"),
+                ])),
+            ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.purple,
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+                    textStyle: const TextStyle(
+                        fontSize: 12, fontWeight: FontWeight.bold)),
+                child: Column(children: const [
+                  Icon(
+                    Icons.auto_stories_rounded,
+                    color: Colors.white,
+                  ),
+                  Text("History"),
+                ])),
+            /*
             IconButton(
               color: Colors.white,
               tooltip: 'Lend',
@@ -35,10 +74,11 @@ class MyBottomAppBar {
             ),
             IconButton(
               color: Colors.white,
-              tooltip: 'Past Orders',
+              tooltip: 'Rent History',
               icon: const Icon(Icons.auto_stories_rounded),
               onPressed: () {},
             ),
+            */
           ],
         ),
       ),

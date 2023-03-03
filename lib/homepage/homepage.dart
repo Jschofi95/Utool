@@ -58,12 +58,14 @@ class _HomePageState extends State<HomePage> {
           : const Center(
               child: Text('No items to display'),
             ),
+      /*
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         tooltip: 'Create',
         //child: const Icon(Icons.add),
         child: const Text('Lend'),
       ),
+      */
       bottomNavigationBar: MyBottomAppBar().bottomAppBarLayout(),
     );
   }
