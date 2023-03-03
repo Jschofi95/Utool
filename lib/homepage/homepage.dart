@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:utool/card/card_data.dart';
 import 'package:utool/appbar/appbar_layouts.dart';
+import 'package:utool/appbar/bottom_appbar.dart';
 import 'package:utool/enums/enums.dart';
 
 class HomePage extends StatefulWidget {
@@ -37,31 +38,33 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: MyAppBar().homeAppBarLayout(),
-        body: items.isNotEmpty
-            ? ListView.builder(
-                itemCount: items.length,
-                itemBuilder: (context, index) {
-                  return CardData(
-                      type: items[index].type,
-                      imgLink: items[index].imgLink,
-                      brand: items[index].brand,
-                      price: items[index].price,
-                      rentPriceInterval: items[index].rentPriceInterval,
-                      condition: items[index].condition,
-                      useType: items[index].useType,
-                      address: items[index].address,
-                      deliveryFee: items[index].deliveryFee);
-                },
-              )
-            : const Center(
-                child: Text('No items to display'),
-              ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {},
-          tooltip: 'Create',
-          //child: const Icon(Icons.add),
-          child: const Text('Lend'),
-        ));
+      appBar: MyAppBar().homeAppBarLayout(),
+      body: items.isNotEmpty
+          ? ListView.builder(
+              itemCount: items.length,
+              itemBuilder: (context, index) {
+                return CardData(
+                    type: items[index].type,
+                    imgLink: items[index].imgLink,
+                    brand: items[index].brand,
+                    price: items[index].price,
+                    rentPriceInterval: items[index].rentPriceInterval,
+                    condition: items[index].condition,
+                    useType: items[index].useType,
+                    address: items[index].address,
+                    deliveryFee: items[index].deliveryFee);
+              },
+            )
+          : const Center(
+              child: Text('No items to display'),
+            ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        tooltip: 'Create',
+        //child: const Icon(Icons.add),
+        child: const Text('Lend'),
+      ),
+      bottomNavigationBar: MyBottomAppBar().bottomAppBarLayout(),
+    );
   }
 }
