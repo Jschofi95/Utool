@@ -11,7 +11,7 @@ import 'package:utool/enums/enums.dart';
 
 class ItemData {
   final String type;
-  final String imgLink;
+  final List <String> imgLinks;
   final String brand;
   final String price;
   final Intervals rentPriceInterval;
@@ -22,7 +22,7 @@ class ItemData {
 
   const ItemData({
     required this.type,
-    required this.imgLink,
+    required this.imgLinks,
     required this.brand,
     required this.price,
     required this.rentPriceInterval,

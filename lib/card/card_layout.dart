@@ -18,7 +18,7 @@ class CardLayout extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             ListTile(
-              leading: Image.asset(itemData.imgLink),
+              leading: Image.asset(itemData.imgLinks[0]),
               title: Text(itemData.type),
               subtitle: Text(
                   '\$${itemData.price} ${itemData.rentPriceInterval.name}'),

@@ -27,7 +27,7 @@ class ItemDetails extends StatelessWidget {
           actions: [
             IconButton(
                 onPressed: () {},
-                icon: Icon(
+                icon: const Icon(
                   Icons.favorite,
                   color: Colors.redAccent,
                   size: 30,

@@ -15,7 +15,7 @@ class _HomePageState extends State<HomePage> {
   List<ItemData> items = [
     const ItemData(
         type: "Wood Chipper",
-        imgLink: "assets/woodchipper_placeholder.png",
+        imgLinks: ["assets/woodchipper_placeholder.png"],
         brand: "Sun-O-Co",
         price: "500",
         rentPriceInterval: Intervals.HOURLY,
@@ -25,7 +25,7 @@ class _HomePageState extends State<HomePage> {
         deliveryFee: "250"),
     const ItemData(
         type: "Stump Grinder",
-        imgLink: "assets/stump_grinder.jpg",
+        imgLinks: ["assets/stump_grinder.jpg"],
         brand: "Carlton",
         price: "750",
         rentPriceInterval: Intervals.HOURLY,
