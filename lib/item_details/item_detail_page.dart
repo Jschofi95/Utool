@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:utool/item/item_data.dart';
 import 'package:utool/enums/enums.dart';
+import 'package:utool/payment/payment.dart';
 
 class ItemDetails extends StatelessWidget {
   final ItemData item; // Data for item to be displayed
@@ -74,7 +75,7 @@ class ItemDetails extends StatelessWidget {
                             child: Text(
                               item.type,
                               style: const TextStyle(
-                                fontSize: 20,
+                                fontSize: 32,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.black,
                               ),
@@ -83,14 +84,21 @@ class ItemDetails extends StatelessWidget {
                           const SizedBox(
                             width: 30,
                           ),
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 16,
-                              vertical: 14,
-                            ),
-                            decoration: BoxDecoration(
-                              color: Colors.deepOrangeAccent,
-                              borderRadius: BorderRadius.circular(8),
+                          ElevatedButton(
+                            onPressed: () {
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (_) => Payment()));
+                            },
+                            style: ElevatedButton.styleFrom(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 16,
+                                vertical: 14,
+                              ),
+                              shape: const RoundedRectangleBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(8)),
+                              ),
+                              backgroundColor: Colors.deepOrangeAccent,
                             ),
                             child: Text(
                               '\$${item.price} \n per ${formatRentDuration(item.rentPriceInterval)}',
@@ -111,7 +119,9 @@ class ItemDetails extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                             color: Colors.black),
                       ),
-                      const SizedBox(height: 10,),
+                      const SizedBox(
+                        height: 10,
+                      ),
                       Container(
                         alignment: Alignment.centerLeft,
                         child: Column(
@@ -121,8 +131,11 @@ class ItemDetails extends StatelessWidget {
                               "Brand: ${item.brand}\nModel: ${item.model}\nHours: ${item.hours}",
                               style: const TextStyle(color: Colors.black),
                             ),
-                            const SizedBox(height: 15,),
-                            Text(item.description,
+                            const SizedBox(
+                              height: 15,
+                            ),
+                            Text(
+                              item.description,
                               style: const TextStyle(color: Colors.black),
                             ),
                           ],
