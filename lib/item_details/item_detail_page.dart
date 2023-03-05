@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:utool/item/item_data.dart';
 import 'package:utool/enums/enums.dart';
-import 'package:utool/payment/payment.dart';
+import 'package:utool/item_details/rent.dart';
 
 class ItemDetails extends StatelessWidget {
   final ItemData item; // Data for item to be displayed
@@ -86,8 +86,14 @@ class ItemDetails extends StatelessWidget {
                           ),
                           ElevatedButton(
                             onPressed: () {
-                              Navigator.push(context,
-                                  MaterialPageRoute(builder: (_) => Payment()));
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) => Rent(
+                                    item: item,
+                                  ),
+                                ),
+                              );
                             },
                             style: ElevatedButton.styleFrom(
                               padding: const EdgeInsets.symmetric(

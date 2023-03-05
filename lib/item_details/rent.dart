@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:utool/item/item_data.dart';
 import 'package:utool/payment/payment.dart';
 
-class Rent extends StatefulWidget {
-  const Rent({Key? key}) : super(key: key);
+class Rent extends StatelessWidget {
+  final ItemData item;
 
-  @override
-  RentPage createState() => RentPage();
-}
+  const Rent({Key? key, required this.item}) : super(key: key);
 
-class RentPage extends State<Rent> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Rent'),
+        title: const Text('Rent'),
       ),
       body: Center(
           child: Column(
@@ -33,7 +31,7 @@ class RentPage extends State<Rent> {
                 Navigator.push(
                     //it should go to payment in the end (payment page did not created yet)
                     context,
-                    MaterialPageRoute(builder: (_) => Payment()));
+                    MaterialPageRoute(builder: (_) => Payment(item: item,)));
               },
               child: const Text(
                 'Make a payment',
