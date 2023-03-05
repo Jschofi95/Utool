@@ -18,22 +18,26 @@ class _HomePageState extends State<HomePage> {
         type: "Wood Chipper",
         imgLinks: ["assets/woodchipper_placeholder.png"],
         brand: "Sun-O-Co",
+        model: "2172b",
         price: "500",
         rentPriceInterval: Intervals.HOURLY,
         condition: "Used",
         useType: UseType.PICK_UP,
         address: "123 Side St, Tuscaloosa, AL, 35402",
-        deliveryFee: "250"),
+        deliveryFee: "250",
+        hours: "127",),
     const ItemData(
         type: "Stump Grinder",
         imgLinks: ["assets/stump_grinder.jpg"],
         brand: "Carlton",
+        model: "110c",
         price: "750",
         rentPriceInterval: Intervals.HOURLY,
         condition: "Like New",
         useType: UseType.PICK_UP,
         address: "321 Main Ave, Tuscaloosa, 35404",
-        deliveryFee: "null")
+        deliveryFee: "null",
+        hours: "242")
   ];
 
   @override
