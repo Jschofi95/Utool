@@ -25,7 +25,8 @@ class _HomePageState extends State<HomePage> {
         useType: UseType.PICK_UP,
         address: "123 Side St, Tuscaloosa, AL, 35402",
         deliveryFee: "250",
-        hours: "127",),
+        hours: "127",
+        description: "This is a wood sun-o-co wood chipper. It is in good condition and runs very well. I can deliver it to you or you can come pick it up."),
     const ItemData(
         type: "Stump Grinder",
         imgLinks: ["assets/stump_grinder.jpg"],
@@ -37,7 +38,8 @@ class _HomePageState extends State<HomePage> {
         useType: UseType.PICK_UP,
         address: "321 Main Ave, Tuscaloosa, 35404",
         deliveryFee: "null",
-        hours: "242")
+        hours: "242",
+        description: "This is my Carlton stump grinder. It has had regular services for it's entire life and runs great. I cannot deliver it so it is for pickup only."),
   ];
 
   @override

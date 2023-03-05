@@ -22,30 +22,30 @@ class ItemDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          foregroundColor: Colors.white,
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          title: const Center(child: Text('Details')),
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back),
-            onPressed: () {
-              Navigator.pop(context);
-            },
+      child: Center(
+        child: Scaffold(
+          appBar: AppBar(
+            foregroundColor: Colors.white,
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            title: const Center(child: Text('Details')),
+            leading: IconButton(
+              icon: const Icon(Icons.arrow_back),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+            actions: [
+              IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.favorite,
+                    color: Colors.redAccent,
+                    size: 30,
+                  ))
+            ],
           ),
-          actions: [
-            IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.favorite,
-                  color: Colors.redAccent,
-                  size: 30,
-                ))
-          ],
-        ),
-        body: Center(
-          child: Column(
+          body: Column(
             children: <Widget>[
               Image.asset(
                 item.imgLinks[0],
@@ -110,7 +110,24 @@ class ItemDetails extends StatelessWidget {
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                             color: Colors.black),
-                      )
+                      ),
+                      const SizedBox(height: 10,),
+                      Container(
+                        alignment: Alignment.centerLeft,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Brand: ${item.brand}\nModel: ${item.model}\nHours: ${item.hours}",
+                              style: const TextStyle(color: Colors.black),
+                            ),
+                            const SizedBox(height: 15,),
+                            Text(item.description,
+                              style: const TextStyle(color: Colors.black),
+                            ),
+                          ],
+                        ),
+                      ),
                     ],
                   ),
                 ),

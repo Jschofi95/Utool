@@ -21,6 +21,7 @@ class ItemData {
   final String address;
   final String deliveryFee;
   final String hours;
+  final String description;
 
   const ItemData({
     required this.type,
@@ -34,5 +35,6 @@ class ItemData {
     required this.address,
     required this.deliveryFee,
     required this.hours,
+    required this.description,
   });
 }
