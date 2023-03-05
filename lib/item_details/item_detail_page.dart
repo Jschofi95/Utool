@@ -27,7 +27,7 @@ class ItemDetails extends StatelessWidget {
           foregroundColor: Colors.white,
           backgroundColor: Colors.transparent,
           elevation: 0,
-          title: const Text('Details'),
+          title: const Center(child: Text('Details')),
           leading: IconButton(
             icon: const Icon(Icons.arrow_back),
             onPressed: () {
@@ -49,8 +49,8 @@ class ItemDetails extends StatelessWidget {
             children: <Widget>[
               Image.asset(
                 item.imgLinks[0],
-                width: 300,
-                height: 300,
+                width: 150,
+                height: 150,
               ),
               const SizedBox(
                 height: 40,
@@ -84,7 +84,10 @@ class ItemDetails extends StatelessWidget {
                             width: 30,
                           ),
                           Container(
-                            padding: const EdgeInsets.all(12),
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 16,
+                              vertical: 14,
+                            ),
                             decoration: BoxDecoration(
                               color: Colors.deepOrangeAccent,
                               borderRadius: BorderRadius.circular(8),
@@ -100,6 +103,14 @@ class ItemDetails extends StatelessWidget {
                           ),
                         ],
                       ),
+                      const SizedBox(height: 20),
+                      const Text(
+                        "Description",
+                        style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black),
+                      )
                     ],
                   ),
                 ),
