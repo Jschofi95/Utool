@@ -63,6 +63,9 @@ flutter:
     - assets/flutter_logo.png
     - assets/woodchipper_placeholder.png
     - assets/stump_grinder.jpg
+    - assets/pruitt_planer.jpg
+    - assets/kubota_bush_hog.jpg
+    - assets/bobcat_skidsteer_s650_with_bucket.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
