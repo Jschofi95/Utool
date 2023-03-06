@@ -4,18 +4,25 @@ class Filter extends StatefulWidget {
   const Filter({Key? key}) : super(key: key);
 
   @override
-  _Filter createState() => _Filter();
+  State<Filter> createState() => _FilterState();
 }
 
-class _Filter extends State<Filter> {
+class _FilterState extends State<Filter> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Filter'),
+    return SafeArea(
+      child: Scaffold(
+        body: Column(
+          children: [
+            ListTile(
+              title: const Text('Item 1'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
       ),
-      body: const Text('Filter results here'),
-      
     );
   }
 }

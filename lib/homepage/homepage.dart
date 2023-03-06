@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:utool/appbar/appbar_layouts.dart';
 import 'package:utool/item/item_data.dart';
 import 'package:utool/card/card_layout.dart';
-import 'package:utool/appbar/appbar_layouts.dart';
 import 'package:utool/appbar/bottom_appbar.dart';
 import 'package:utool/enums/enums.dart';
 
@@ -76,7 +76,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MyAppBar().homeAppBarLayout(),
+      appBar: AppBarLayouts.homeAppBarLayout(context),
       body: items.isNotEmpty
           ? ListView.builder(
               itemCount: items.length,
