@@ -26,6 +26,10 @@ class _SuccessfulPay extends State<SuccessfulPay> {
             'Your order has been successfully placed.',
             style: TextStyle(fontSize: 20, color: Colors.red),
           ),
+          //add a empty line
+          const Text(
+            ' ',
+          ),
           Container(
             height: 50,
             width: 250,

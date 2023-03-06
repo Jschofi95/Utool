@@ -15,7 +15,23 @@ class Payment extends StatelessWidget {
       body: Center(
           child: Column(
         children: <Widget>[
-          Text('total Price: ${item.price}'),
+          Text(
+            'Rent Price: ${int.parse(item.price)}',
+            style: const TextStyle(fontSize: 28, color: Colors.red),
+          ),
+          //10% for tax price
+          Text(
+            'Tax Price: ${0.1 * int.parse(item.price)}',
+            style: const TextStyle(fontSize: 28, color: Colors.red),
+          ),
+          Text(
+            'Total Price: ${1.1 * int.parse(item.price)}',
+            style: const TextStyle(fontSize: 28, color: Colors.red),
+          ),
+          //add a empty line
+          const Text(
+            ' ',
+          ),
           Container(
             height: 50,
             width: 250,
