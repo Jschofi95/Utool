@@ -1,25 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:utool/item/item_data.dart';
-import 'package:utool/payment/payment.dart';
+import 'package:utool/homepage/homepage.dart';
 
-class Rent extends StatelessWidget {
-  final ItemData item;
+class SuccessfulPay extends StatefulWidget {
+  const SuccessfulPay({Key? key}) : super(key: key);
 
-  const Rent({Key? key, required this.item}) : super(key: key);
+  @override
+  _SuccessfulPay createState() => _SuccessfulPay();
+}
 
+class _SuccessfulPay extends State<SuccessfulPay> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Rent'),
+        title: const Text('uTool'),
       ),
       body: Center(
           child: Column(
         children: <Widget>[
           const Text(
-            //detail for the delivery information
-            'The Delivery date',
+            'Thank you !',
             style: TextStyle(fontSize: 28, color: Colors.red),
+          ),
+          const Text(
+            'Your order has been successfully placed.',
+            style: TextStyle(fontSize: 20, color: Colors.red),
           ),
           Container(
             height: 50,
@@ -31,13 +36,10 @@ class Rent extends StatelessWidget {
                 Navigator.push(
                     //it should go to payment in the end (payment page did not created yet)
                     context,
-                    MaterialPageRoute(
-                        builder: (_) => Payment(
-                              item: item,
-                            )));
+                    MaterialPageRoute(builder: (_) => HomePage()));
               },
               child: const Text(
-                'Make a payment',
+                'Return home',
                 style: TextStyle(color: Colors.white, fontSize: 25),
               ),
             ),

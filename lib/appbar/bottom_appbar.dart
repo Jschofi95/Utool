@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:utool/userprofile/userprofile.dart';
+import 'package:utool/order/order.dart';
 
 class MyBottomAppBar extends StatelessWidget {
   /*
@@ -24,7 +25,10 @@ class MyBottomAppBar extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (_) => UserProfile()));
+                },
                 style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.purple,
                     padding:
@@ -40,8 +44,8 @@ class MyBottomAppBar extends StatelessWidget {
                 ])),
             ElevatedButton(
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (_) => UserProfile()));
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (_) => Order()));
                 },
                 style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.purple,
