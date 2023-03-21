@@ -10,20 +10,24 @@ import 'package:utool/enums/enums.dart';
   */
 
 class ItemData {
-  final String type;
-  final List<String> imgLinks;
-  final String brand;
-  final String model;
-  final String price;
-  final Intervals rentPriceInterval;
-  final String condition;
-  final UseType useType;
-  final String address;
-  final String deliveryFee;
-  final String hours;
-  final String description;
+  String type;
+  List<String> imgLinks;
+  String brand;
+  String model;
+  double price;
+  Intervals rentPriceInterval;
+  String condition;
+  UseType useType;
+  String addressLine1;
+  String addressLine2;
+  String city;
+  String state;
+  int zipCode;
+  double deliveryFee;
+  double hours;
+  String description;
 
-  const ItemData({
+  ItemData({
     required this.type,
     required this.imgLinks,
     required this.brand,
@@ -32,7 +36,11 @@ class ItemData {
     required this.rentPriceInterval,
     required this.condition,
     required this.useType,
-    required this.address,
+    required this.addressLine1,
+    required this.addressLine2,
+    required this.city,
+    required this.state,
+    required this.zipCode,
     required this.deliveryFee,
     required this.hours,
     required this.description,

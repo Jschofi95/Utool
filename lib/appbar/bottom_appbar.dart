@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:utool/userprofile/userprofile.dart';
+import 'package:utool/user/user_profile.dart';
 import 'package:utool/order/order.dart';
 
 class MyBottomAppBar extends StatelessWidget {

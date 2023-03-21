@@ -5,7 +5,7 @@ import 'package:utool/card/card_layout.dart';
 import 'package:utool/enums/enums.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:utool/message/message.dart';
-import 'package:utool/userprofile/userprofile.dart';
+import 'package:utool/user/user_profile.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
