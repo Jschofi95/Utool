@@ -3,11 +3,19 @@ import 'package:utool/homepage/homepage.dart';
 import 'package:utool/init.dart';
 import 'package:utool/login/login.dart';
 import 'package:utool/splash_screen.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:utool/themes/theme_layouts.dart';
-//import 'firebase_options.dart'; // Generated file
 
-void main() {
+// Firebase
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+
+void main() async {
+  
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   runApp(MyApp());
 }
 
