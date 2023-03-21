@@ -22,9 +22,9 @@ class User {
   String username;
 
 
-  List<ItemData> listings; // All listings posted by this user
-  List<ItemData> history; // History of listings viewed by this user
-  List<ItemData> favorites; // List of all favoritted listings by this user
+  List<String> listings; // All item IDs for listings posted by this user
+  List<String> history; // History of all item IDs for listings viewed by this user
+  List<String> favorites; // List of all item IDs favorited listings by this user
   
   User({
     required this.id,

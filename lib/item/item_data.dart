@@ -10,6 +10,7 @@ import 'package:utool/enums/enums.dart';
   */
 
 class ItemData {
+  String id; // Unique Id for this item, once an id is used, it can never be used again
   String type;
   List<String> imgLinks;
   String brand;
@@ -28,6 +29,7 @@ class ItemData {
   String description;
 
   ItemData({
+    required this.id,
     required this.type,
     required this.imgLinks,
     required this.brand,
