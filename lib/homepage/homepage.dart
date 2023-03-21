@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:utool/appbar/appbar_layouts.dart';
 import 'package:utool/item/item_data.dart';
 import 'package:utool/card/card_layout.dart';
-import 'package:utool/appbar/bottom_appbar.dart';
 import 'package:utool/enums/enums.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
+import 'package:utool/message/message.dart';
+import 'package:utool/userprofile/userprofile.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -118,7 +119,31 @@ class _HomePageState extends State<HomePage> {
         style: TabStyle.fixedCircle,
         cornerRadius: 25.0,
         backgroundColor: Colors.orangeAccent,
-        onTap: (int i) => print('click index=$i'),
+        // onTap: (int i) => print('click index=$i'),
+        onTap: (int i) {
+          // Message button click
+          if (i == 0) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => Message(),
+              ),
+            );
+          }
+          // Post button click
+          else if (i == 1) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text("TODO: Add item post page"),
+                duration: Duration(seconds: 3),
+              ),
+            );
+          }
+          // User button click
+          else if (i == 2) {
+            Navigator.push(context, MaterialPageRoute(builder: (_) => UserProfile()));
+          }
+        },
       ),
     );
   }

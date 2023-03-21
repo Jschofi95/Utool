@@ -30,11 +30,13 @@ class CardLayout extends StatelessWidget {
                   child: const Text('Detail'),
                   onPressed: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (_) => ItemDetails(
-                                  item: itemData,
-                                )));
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => ItemDetails(
+                          item: itemData,
+                        ),
+                      ),
+                    );
                   },
                 ),
 
