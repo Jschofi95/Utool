@@ -115,7 +115,7 @@ class _HomePageState extends State<HomePage> {
           TabItem(icon: Icons.add, title: 'Add'),
           TabItem(icon: Icons.people, title: 'Profile'),
         ],
-        style: TabStyle.fixed,
+        style: TabStyle.fixedCircle,
         cornerRadius: 25.0,
         backgroundColor: Colors.orangeAccent,
         onTap: (int i) => print('click index=$i'),
