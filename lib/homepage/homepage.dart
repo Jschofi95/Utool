@@ -4,6 +4,7 @@ import 'package:utool/item/item_data.dart';
 import 'package:utool/card/card_layout.dart';
 import 'package:utool/appbar/bottom_appbar.dart';
 import 'package:utool/enums/enums.dart';
+import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -70,7 +71,20 @@ class _HomePageState extends State<HomePage> {
         hours: "210",
         description:
             "60\" l3400 Kubota Bush hog. The blades and belts were replaced very recently so it is good to go for any large field that you need it for. I can't deliver it, so it must be picked up. Message me for details!"),
-    const ItemData(type: "Skidsteer", imgLinks: ["assets/bobcat_skidsteer_s650_with_bucket.jpg"], brand: "Bobcat", model: "s650", price: "1400", rentPriceInterval: Intervals.WEEKLY, condition: "Like New", useType: UseType.DELIVERY, address: "1012 Main St. ", deliveryFee: "100", hours: "342", description: "This is our like new 2012 Bobcat skidsteer. It is in very good condition. It does have a small hydraulic leak. It comes with a bucket. Any other attachments will not be provided. Also, it is for delivery ONLY. No pick up is available."),        
+    const ItemData(
+        type: "Skidsteer",
+        imgLinks: ["assets/bobcat_skidsteer_s650_with_bucket.jpg"],
+        brand: "Bobcat",
+        model: "s650",
+        price: "1400",
+        rentPriceInterval: Intervals.WEEKLY,
+        condition: "Like New",
+        useType: UseType.DELIVERY,
+        address: "1012 Main St. ",
+        deliveryFee: "100",
+        hours: "342",
+        description:
+            "This is our like new 2012 Bobcat skidsteer. It is in very good condition. It does have a small hydraulic leak. It comes with a bucket. Any other attachments will not be provided. Also, it is for delivery ONLY. No pick up is available."),
   ];
 
   @override
@@ -95,7 +109,17 @@ class _HomePageState extends State<HomePage> {
         child: const Text('Lend'),
       ),
       */
-      bottomNavigationBar: MyBottomAppBar(),
+      bottomNavigationBar: ConvexAppBar(
+        items: const [
+          TabItem(icon: Icons.message, title: 'Messages'),
+          TabItem(icon: Icons.add, title: 'Add'),
+          TabItem(icon: Icons.people, title: 'Profile'),
+        ],
+        style: TabStyle.fixed,
+        cornerRadius: 25.0,
+        backgroundColor: Colors.orangeAccent,
+        onTap: (int i) => print('click index=$i'),
+      ),
     );
   }
 }
