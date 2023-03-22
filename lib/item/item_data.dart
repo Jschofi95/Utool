@@ -10,9 +10,9 @@ import 'package:utool/enums/enums.dart';
   */
 
 class ItemData {
-  String id; // Unique Id for this item, once an id is used, it can never be used again
+  String
+      id; // Unique Id for this item, once an id is used, it can never be used again
   String type;
-  List<String> imgLinks;
   String brand;
   String model;
   double price;
@@ -27,6 +27,8 @@ class ItemData {
   double deliveryFee;
   double hours;
   String description;
+  //List<String> imgLinks = ['assets/woodchipper_placeholder.png'];
+  List<String> imgLinks;
 
   ItemData({
     required this.id,
