@@ -1,3 +1,10 @@
+/*
+  Description: Serves as the 'main' page for the app. This is where users
+               can explore various items on the store, upload their items,
+               view their account, send messages, etc.
+  Contributors: Aaron Schofield
+*/
+
 import 'package:flutter/material.dart';
 import 'package:utool/appbar/appbar_layouts.dart';
 import 'package:utool/item/item_data.dart';
@@ -101,16 +108,21 @@ class _HomePageState extends State<HomePage> {
         .collection('Items')
         .snapshots()
         .listen((records) {
-      // mapRecords(records);
+      mapRecords(records);
     });
     super.initState();
   }
 
+  // Pull data from Items collection on Firebase
   getRecords() async {
     var records = await FirebaseFirestore.instance.collection('Items').get();
     mapRecords(records);
   }
 
+  /*
+  * Description: Converts a string to the equivalent Interval enum. Throws exception, if a match is not found
+  * Contributors: Aaron Schofield
+  */
   Intervals strToInterval(String str) {
     switch (str) {
       case 'HOURLY':
@@ -126,6 +138,8 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
+  /*  Description:  Converts a string to the equivalent UseType enum. Throws exception, if a match is not found
+   *  Contributors: Aaron Schofield */ 
   UseType strToUseType(String str) {
     switch (str) {
       case 'DELIVERY':
@@ -138,7 +152,14 @@ class _HomePageState extends State<HomePage> {
         throw Exception('Invalid UseType string in database: $str');
     }
   }
+  
 
+  /* Description: Converts a list of dynamic objects
+   *              into a list of String objects and returns it.
+   *              This is necessary because items stored as
+   *              arrays on firebase are stored as dynamic objects.
+   * Contributors: Aaron Schofield
+   */
   List<String> dynamicListToStringList(List<dynamic> dynamicList) {
     List<String> stringList = dynamicList.map((e) => e.toString()).toList();
     return stringList;
