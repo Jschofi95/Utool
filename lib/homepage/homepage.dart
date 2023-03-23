@@ -12,6 +12,7 @@ import 'package:utool/card/card_layout.dart';
 import 'package:utool/enums/enums.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:utool/message/message.dart';
+import 'package:utool/post/post.dart';
 import 'package:utool/user/user_profile.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -139,7 +140,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   /*  Description:  Converts a string to the equivalent UseType enum. Throws exception, if a match is not found
-   *  Contributors: Aaron Schofield */ 
+   *  Contributors: Aaron Schofield */
   UseType strToUseType(String str) {
     switch (str) {
       case 'DELIVERY':
@@ -152,7 +153,6 @@ class _HomePageState extends State<HomePage> {
         throw Exception('Invalid UseType string in database: $str');
     }
   }
-  
 
   /* Description: Converts a list of dynamic objects
    *              into a list of String objects and returns it.
@@ -241,12 +241,19 @@ class _HomePageState extends State<HomePage> {
           }
           // Post button click
           else if (i == 1) {
-            ScaffoldMessenger.of(context).showSnackBar(
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => Post(),
+              ),
+            );
+
+            /*ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(
                 content: Text("TODO: Add item post page"),
                 duration: Duration(seconds: 3),
               ),
-            );
+            );*/
           }
           // User button click
           else if (i == 2) {
