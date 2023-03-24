@@ -1,3 +1,9 @@
+/*
+  Description: filter page for homepage
+                need to add functionality and some more filters
+  Contributors: Dylan Brown
+*/
+
 import 'package:flutter/material.dart';
 
 class Filter extends StatefulWidget {
