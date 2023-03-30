@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:utool/item/item_data.dart';
+import 'successfulpost.dart';
 
 class Post extends StatefulWidget {
   const Post({Key? key}) : super(key: key);
@@ -8,13 +10,14 @@ class Post extends StatefulWidget {
 }
 
 class _Post extends State<Post> {
+  late ItemData item;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('New post'),
       ),
-
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
@@ -63,6 +66,15 @@ class _Post extends State<Post> {
             ),
 
             //rentPriceInterval
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              child: TextField(
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Rent Price Interval',
+                    hintText: 'Enter price Interval'),
+              ),
+            ),
 
             //condition
             const Padding(
@@ -165,21 +177,10 @@ class _Post extends State<Post> {
               ),
             ),
 
-            const Padding(
-              padding:
-                  EdgeInsets.only(left: 10.0, right: 10.0, top: 10, bottom: 0),
-              //padding: EdgeInsets.symmetric(horizontal: 10),
-              child: TextField(
-                obscureText: true,
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Password',
-                    hintText: 'Enter new password'),
-              ),
-            ),
             TextButton(
               onPressed: () {
-                // TODO FORGOT PASSWORD SCREEN GOES HERE
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (_) => SuccessfulPost()));
               },
               child: const Text(
                 'Post',
@@ -189,7 +190,6 @@ class _Post extends State<Post> {
           ],
         ),
       ),
-      //It should connect to message system. Have no idea yet.
     );
   }
 }

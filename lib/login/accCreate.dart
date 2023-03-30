@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:utool/login/login.dart';
 
 class AccountCreationPage extends StatefulWidget {
   @override
@@ -61,6 +62,9 @@ class _AccountCreationPageState extends State<AccountCreationPage> {
                 onPressed: () async {
                   // Add code to create account with _email and _password
                   // You can use Firebase Auth, for example
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (_) => LoginPage()));
+
                   if (_formKey.currentState!.validate()) {
                     try {
                       UserCredential userCredential = await FirebaseAuth
