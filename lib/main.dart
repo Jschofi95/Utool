@@ -3,8 +3,11 @@ import 'package:utool/homepage/homepage.dart';
 import 'package:utool/init.dart';
 import 'package:utool/login/login.dart';
 import 'package:utool/splash_screen.dart';
-import 'package:firebase_core/firebase_core.dart'; //
-//import 'firebase_options.dart'; // Generated file
+import 'package:utool/themes/theme_layouts.dart';
+
+// Firebase
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,15 +27,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Initialization',
-        home: FutureBuilder(
-            future: _initFuture,
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.done) {
-                return LoginPage();
-              } else {
-                return SplashScreen();
-              }
-            }));
+      title: 'Initialization',
+      home: FutureBuilder(
+        future: _initFuture,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            return LoginPage();
+          } else {
+            return SplashScreen();
+          }
+        },
+      ),
+      theme: darkTheme1(),
+    );
   }
 }

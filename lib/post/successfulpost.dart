@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:utool/homepage/homepage.dart';
 
-class SuccessfulPay extends StatefulWidget {
-  const SuccessfulPay({Key? key}) : super(key: key);
+class SuccessfulPost extends StatefulWidget {
+  const SuccessfulPost({Key? key}) : super(key: key);
 
   @override
-  _SuccessfulPay createState() => _SuccessfulPay();
+  _SuccessfulPost createState() => _SuccessfulPost();
 }
 
-class _SuccessfulPay extends State<SuccessfulPay> {
+class _SuccessfulPost extends State<SuccessfulPost> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,17 +19,20 @@ class _SuccessfulPay extends State<SuccessfulPay> {
           child: Column(
         children: <Widget>[
           const Text(
-            'Thank you !',
+            'Good job !',
             style: TextStyle(fontSize: 28, color: Colors.red),
           ),
+
           const Text(
-            'Your order has been successfully placed.',
+            'Your tool already posted',
             style: TextStyle(fontSize: 20, color: Colors.red),
           ),
+
           //add a empty line
           const Text(
             ' ',
           ),
+
           Container(
             height: 50,
             width: 250,
@@ -38,12 +41,10 @@ class _SuccessfulPay extends State<SuccessfulPay> {
             child: TextButton(
               onPressed: () {
                 Navigator.push(
-                    //it should go to payment in the end (payment page did not created yet)
-                    context,
-                    MaterialPageRoute(builder: (_) => HomePage()));
+                    context, MaterialPageRoute(builder: (_) => HomePage()));
               },
               child: const Text(
-                'Return home',
+                'Back to home page',
                 style: TextStyle(color: Colors.white, fontSize: 25),
               ),
             ),

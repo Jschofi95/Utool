@@ -18,8 +18,15 @@ class Rent extends StatelessWidget {
         children: <Widget>[
           const Text(
             //detail for the delivery information
-            'The Delivery date',
+            'The Delivery date:',
             style: TextStyle(fontSize: 28, color: Colors.red),
+          ),
+          const Text(
+            '03/10/2023',
+            style: TextStyle(fontSize: 24, color: Colors.red),
+          ),
+          const Text(
+            ' ',
           ),
           Container(
             height: 50,
