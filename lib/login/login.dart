@@ -133,7 +133,7 @@ class _LoginPageState extends State<LoginPage> {
 
   Future signIn() async {
     const errorMessage = SnackBar(
-      content: Text('Incorrect username or password'),
+      content: Text('Incorrect format for username or password'),
       behavior: SnackBarBehavior.floating,
       margin: EdgeInsets.only(bottom: 50.0, left: 50.0, right: 50.0),
     );
