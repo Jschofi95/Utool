@@ -6,10 +6,18 @@ import 'package:utool/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart'; //
 //import 'firebase_options.dart'; // Generated file
 
-void main() {
+Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
   runApp(MyApp());
 }
 
+/*
+void main() {
+  runApp(MyApp());
+}
+*/
 class MyApp extends StatelessWidget {
   final Future _initFuture = Init.initialize();
 

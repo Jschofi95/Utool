@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:utool/homepage/homepage.dart';
 import 'package:utool/login/accCreate.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:utool/login/auth.dart';
 import 'package:utool/login/accRecover.dart';
 
 class LoginPage extends StatefulWidget {
@@ -12,6 +13,19 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  String _email = '';
+  String _password = '';
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,21 +48,31 @@ class _LoginPageState extends State<LoginPage> {
                     child: Image.asset('assets/uTools_logo.png')),
               ),
             ),
-            const Padding(
+            Padding(
               //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
               padding: EdgeInsets.symmetric(horizontal: 15),
               child: TextField(
+                onChanged: (value) {
+                  setState(() {
+                    _email = value;
+                  });
+                },
                 decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Email',
                     hintText: 'Enter valid email id as abc@gmail.com'),
               ),
             ),
-            const Padding(
+            Padding(
               padding:
                   EdgeInsets.only(left: 15.0, right: 15.0, top: 15, bottom: 0),
               //padding: EdgeInsets.symmetric(horizontal: 15),
               child: TextField(
+                onChanged: (value) {
+                  setState(() {
+                    _password = value;
+                  });
+                },
                 obscureText: true,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(),
@@ -73,10 +97,11 @@ class _LoginPageState extends State<LoginPage> {
               decoration: BoxDecoration(
                   color: Colors.blue, borderRadius: BorderRadius.circular(20)),
               child: TextButton(
-                onPressed: () {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => HomePage()));
-                },
+                onPressed: signIn,
+                /*
+                on
+                on (
+                */
                 child: const Text(
                   'Login',
                   style: TextStyle(color: Colors.white, fontSize: 25),
@@ -99,6 +124,13 @@ class _LoginPageState extends State<LoginPage> {
           ],
         ),
       ),
+    );
+  }
+
+  Future signIn() async {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: _email,
+      password: _password,
     );
   }
 }
