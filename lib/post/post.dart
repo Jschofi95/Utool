@@ -1,6 +1,10 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
+import 'package:utool/homepage/homepage.dart';
 import 'package:utool/item/item_data.dart';
 import 'successfulpost.dart';
+import 'package:utool/enums/enums.dart';
 
 class Post extends StatefulWidget {
   const Post({Key? key}) : super(key: key);
@@ -10,7 +14,75 @@ class Post extends StatefulWidget {
 }
 
 class _Post extends State<Post> {
-  late ItemData item;
+  final idController = TextEditingController();
+  final typeController = TextEditingController();
+  final brandController = TextEditingController();
+  final modelController = TextEditingController();
+  final priceController = TextEditingController();
+  final rentPriceIntervalController = TextEditingController();
+  final conditionController = TextEditingController();
+  final useTypeController = TextEditingController();
+  final addressLine1Controller = TextEditingController();
+  final addressLine2Controller = TextEditingController();
+  final cityController = TextEditingController();
+  final stateController = TextEditingController();
+  final zipCodeController = TextEditingController();
+  final deliveryFeeController = TextEditingController();
+  final hoursController = TextEditingController();
+  final descriptionController = TextEditingController();
+  final imgLinksController = TextEditingController();
+
+  Map<String, dynamic> item = {
+    'id': '1b',
+    'type': '',
+    'brand': '',
+    'model': '',
+    'price': 0.0,
+    'rentPriceInterval': '',
+    'condition': '',
+    'useType': '',
+    'addressLine1': '',
+    'addressLine2': '',
+    'city': '',
+    'state': '',
+    'zipCode': 0,
+    'deliveryFee': 0.0,
+    'hours': 0.0,
+    'description': '',
+    'imgLinks': ['assets/woodchipper_placeholder.png'],
+  };
+
+  void buildItem() {
+    item['type'] = typeController.text;
+    item['brand'] = brandController.text;
+    item['model'] = modelController.text;
+    item['price'] = dynToDouble(priceController.text);
+    item['rentPriceInterval'] = rentPriceIntervalController.text;
+    item['condition'] = conditionController.text;
+    item['useType'] = useTypeController.text;
+    item['addressLine1'] = addressLine1Controller.text;
+    item['addressLine2'] = addressLine2Controller.text;
+    item['city'] = cityController.text;
+    item['state'] = stateController.text;
+    item['zipCode'] = dynToDouble(zipCodeController.text);
+    item['deliveryFee'] = dynToDouble(deliveryFeeController.text);
+    item['hours'] = dynToDouble(hoursController.text);
+    item['description'] = descriptionController.text;
+    item['imgLinks'] = imgLinksController.text;
+  }
+
+  // Dynamic to double
+  double dynToDouble(String data) {
+    double price;
+    if (double.tryParse(data) != null) {
+      price = double.parse(data);
+    } else {
+      // Handle the case where the price is not a valid numeric value
+      // For example, you can set the price to a default value or show an error message
+      price = 0.0;
+    }
+    return price;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,10 +93,11 @@ class _Post extends State<Post> {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            const Padding(
+            Padding(
               //type
               padding: EdgeInsets.symmetric(horizontal: 10),
               child: TextField(
+                controller: typeController,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Tool Type',
@@ -33,20 +106,22 @@ class _Post extends State<Post> {
             ),
 
             //imageLink
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10),
-              child: TextField(
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'ImageLink',
-                    hintText: 'Enter image'),
-              ),
-            ),
+            // Padding(
+            //   padding: EdgeInsets.symmetric(horizontal: 10),
+            //   child: TextField(
+            //     controller: imageController,
+            //     decoration: InputDecoration(
+            //         border: OutlineInputBorder(),
+            //         labelText: 'ImageLink',
+            //         hintText: 'Enter image'),
+            //   ),
+            // ),
 
             //brand
-            const Padding(
+            Padding(
               padding: EdgeInsets.symmetric(horizontal: 10),
               child: TextField(
+                controller: brandController,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Brand',
@@ -55,9 +130,10 @@ class _Post extends State<Post> {
             ),
 
             //price
-            const Padding(
+            Padding(
               padding: EdgeInsets.symmetric(horizontal: 10),
               child: TextField(
+                controller: priceController,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Price',
@@ -66,9 +142,10 @@ class _Post extends State<Post> {
             ),
 
             //rentPriceInterval
-            const Padding(
+            Padding(
               padding: EdgeInsets.symmetric(horizontal: 10),
               child: TextField(
+                controller: rentPriceIntervalController,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Rent Price Interval',
@@ -77,9 +154,10 @@ class _Post extends State<Post> {
             ),
 
             //condition
-            const Padding(
+            Padding(
               padding: EdgeInsets.symmetric(horizontal: 10),
               child: TextField(
+                controller: conditionController,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Condition',
@@ -88,9 +166,10 @@ class _Post extends State<Post> {
             ),
 
             //useType
-            const Padding(
+            Padding(
               padding: EdgeInsets.symmetric(horizontal: 10),
               child: TextField(
+                controller: useTypeController,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Use Type',
@@ -99,22 +178,33 @@ class _Post extends State<Post> {
             ),
 
             //address
-            const Padding(
+            Padding(
               padding: EdgeInsets.symmetric(horizontal: 10),
               child: TextField(
+                controller: addressLine1Controller,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(),
-                    labelText: 'Address',
+                    labelText: 'Address line 1',
                     hintText: 'Enter address'),
               ),
             ),
 
             //address2
-
-            //city
-            const Padding(
+            Padding(
               padding: EdgeInsets.symmetric(horizontal: 10),
               child: TextField(
+                controller: addressLine2Controller,
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Address line 2',
+                    hintText: 'Enter address'),
+              ),
+            ),
+            //city
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              child: TextField(
+                controller: cityController,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'City',
@@ -123,9 +213,10 @@ class _Post extends State<Post> {
             ),
 
             //state
-            const Padding(
+            Padding(
               padding: EdgeInsets.symmetric(horizontal: 10),
               child: TextField(
+                controller: stateController,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'State',
@@ -134,9 +225,10 @@ class _Post extends State<Post> {
             ),
 
             //zipCode
-            const Padding(
+            Padding(
               padding: EdgeInsets.symmetric(horizontal: 10),
               child: TextField(
+                controller: zipCodeController,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Zip Code',
@@ -145,9 +237,10 @@ class _Post extends State<Post> {
             ),
 
             //deliveryFee
-            const Padding(
+            Padding(
               padding: EdgeInsets.symmetric(horizontal: 10),
               child: TextField(
+                controller: deliveryFeeController,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Would you pay deliveryFee',
@@ -156,9 +249,10 @@ class _Post extends State<Post> {
             ),
 
             //hours
-            const Padding(
+            Padding(
               padding: EdgeInsets.symmetric(horizontal: 10),
               child: TextField(
+                controller: hoursController,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'How long would you like to rent',
@@ -167,9 +261,10 @@ class _Post extends State<Post> {
             ),
 
             //description
-            const Padding(
+            Padding(
               padding: EdgeInsets.symmetric(horizontal: 10),
               child: TextField(
+                controller: descriptionController,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Discription',
@@ -179,8 +274,15 @@ class _Post extends State<Post> {
 
             TextButton(
               onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (_) => SuccessfulPost()));
+                buildItem();
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => SuccessfulPost(
+                      item: item,
+                    ),
+                  ),
+                );
               },
               child: const Text(
                 'Post',
