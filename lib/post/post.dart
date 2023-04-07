@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, avoid_print
 
 import 'package:flutter/material.dart';
 import 'package:utool/homepage/homepage.dart';
@@ -82,6 +82,98 @@ class _Post extends State<Post> {
       price = 0.0;
     }
     return price;
+  }
+
+  // Check that a string only contains letters and or numbers
+  bool containsOnlyLettersAndNumbers(String str) {
+    final RegExp regex = RegExp(r'^[a-zA-Z0-9 ]+$');
+    return regex.hasMatch(str);
+  }
+
+  bool containsOnlyCharacters(String str) {
+    final RegExp regex = RegExp(r'^[a-zA-Z]+$');
+    return regex.hasMatch(str);
+  }
+
+  bool containsOnlyNumbers(String str) {
+    final numberRegex = RegExp(r'^-?[0-9]+([.][0-9]+)?$');
+    return numberRegex.hasMatch(str);
+  }
+
+  bool isCorrectRentPriceInterval(String str) {
+    if (str == 'HOURLY' ||
+        str == 'DAILY' ||
+        str == 'WEEKLY' ||
+        str == 'MONTHLY') return true;
+    return false;
+  }
+
+  bool isCorrectUseType(String str) {
+    if (str == 'DELIVERY' || str == 'PICK_UP' || str == 'STORE_USE_ONLY')
+      return true;
+    return false;
+  }
+
+  // Check that all fields contain valid input
+  int checkIfAllFieldsValid() {
+    // Check tool type
+    if (typeController.text.isEmpty ||
+        !containsOnlyLettersAndNumbers(typeController.text)) {
+      print('Type is incorrect format');
+      return 1;
+    } else if (brandController.text.isEmpty ||
+        !containsOnlyCharacters(brandController.text)) {
+      print('Brand is incorrect format');
+      return 2;
+    } else if (priceController.text.isEmpty ||
+        !containsOnlyNumbers(priceController.text)) {
+      print('Price is incorrect format');
+      return 3;
+    } else if (rentPriceIntervalController.text.isEmpty ||
+        !isCorrectRentPriceInterval(rentPriceIntervalController.text)) {
+      print(' rentPriceInterval is incorrect format');
+      return 4;
+    } else if (conditionController.text.isEmpty ||
+        !containsOnlyCharacters(conditionController.text)) {
+      print('Condition is incorrect format');
+      return 5;
+    } else if (useTypeController.text.isEmpty ||
+        !isCorrectUseType(useTypeController.text)) {
+      print('useType is incorrect format');
+      return 6;
+    } else if (addressLine1Controller.text.isEmpty ||
+        !containsOnlyLettersAndNumbers(addressLine1Controller.text)) {
+      print('Address Line 1 incorrect format');
+      return 7;
+    } else if (addressLine2Controller.text.isNotEmpty && !containsOnlyLettersAndNumbers(addressLine2Controller.text)) {
+      print('Address line 2 is incorrect format');
+      return 8;
+    } else if (cityController.text.isEmpty ||
+        !containsOnlyCharacters(cityController.text)) {
+      print('City controller is incorrect format');
+      return 9;
+    } else if (stateController.text.isEmpty ||
+        !containsOnlyCharacters(stateController.text)) {
+      print('State is incorrect format');
+      return 10;
+    } else if (zipCodeController.text.isEmpty ||
+        !containsOnlyNumbers(zipCodeController.text)) {
+      print('zipCode is incorrect format');
+      return 11;
+    } else if (deliveryFeeController.text.isEmpty ||
+        !containsOnlyNumbers(deliveryFeeController.text)) {
+      print('Delivery fee is incorrect format');
+      return 12;
+    } else if (hoursController.text.isEmpty ||
+        !containsOnlyNumbers(hoursController.text)) {
+      print('Hours is incorrect format');
+      return 13;
+    } else if (descriptionController.text.isEmpty ||
+        !containsOnlyLettersAndNumbers(descriptionController.text)) {
+      print('Description is incorrect format');
+      return 14;
+    }
+    return 0;
   }
 
   @override
@@ -197,7 +289,7 @@ class _Post extends State<Post> {
                 decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Address line 2',
-                    hintText: 'Enter address'),
+                    hintText: 'Enter address OPTIONAL'),
               ),
             ),
             //city
@@ -255,8 +347,8 @@ class _Post extends State<Post> {
                 controller: hoursController,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(),
-                    labelText: 'How long would you like to rent',
-                    hintText: 'Enter time'),
+                    labelText: 'Hours on tool',
+                    hintText: 'Enter hours'),
               ),
             ),
 
@@ -274,15 +366,17 @@ class _Post extends State<Post> {
 
             TextButton(
               onPressed: () {
-                buildItem();
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) => SuccessfulPost(
-                      item: item,
+                if (checkIfAllFieldsValid() == 0) {
+                  buildItem();
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => SuccessfulPost(
+                        item: item,
+                      ),
                     ),
-                  ),
-                );
+                  );
+                }
               },
               child: const Text(
                 'Post',
