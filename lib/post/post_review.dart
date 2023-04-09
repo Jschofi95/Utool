@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:utool/homepage/homepage.dart';
 import 'package:utool/item/item_data.dart';
 
-class SuccessfulPost extends StatelessWidget {
+class PostReview extends StatelessWidget {
   final Map<String, dynamic> item;
 
-  const SuccessfulPost({Key? key, required this.item}) : super(key: key);
+  const PostReview({Key? key, required this.item}) : super(key: key);
 
   TextStyle defaultHintStyle() {
     return TextStyle(

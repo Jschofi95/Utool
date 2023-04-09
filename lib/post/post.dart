@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:utool/homepage/homepage.dart';
 import 'package:utool/item/item_data.dart';
-import 'successfulpost.dart';
+import 'post_review.dart';
 import 'package:utool/enums/enums.dart';
 
 class Post extends StatefulWidget {
@@ -371,7 +371,7 @@ class _Post extends State<Post> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (_) => SuccessfulPost(
+                      builder: (_) => PostReview(
                         item: item,
                       ),
                     ),
