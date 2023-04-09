@@ -181,11 +181,11 @@ class _HomePageState extends State<HomePage> {
             addressLine2: item['addressLine2'],
             city: item['city'],
             state: item['state'],
-            zipCode: item['zipCode'],
+            zipCode: item['zipCode'].toDouble(),
             deliveryFee: item['deliveryFee'].toDouble(),
             hours: item['hours'].toDouble(),
-            description: item['descriptions'],
-            imgLinks: dynamicListToStringList(item['imgLinks']),
+            description: item['description'],
+            imgLinks: item['imgLinks'],
           ),
         )
         .toList();

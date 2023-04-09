@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:utool/homepage/homepage.dart';
 import 'package:utool/item/item_data.dart';
@@ -7,13 +8,20 @@ import 'package:utool/item/item_data.dart';
 class PostReview extends StatelessWidget {
   final Map<String, dynamic> item;
 
-  const PostReview({Key? key, required this.item}) : super(key: key);
+  PostReview({Key? key, required this.item}) : super(key: key);
+
+  CollectionReference itemsCollection =
+      FirebaseFirestore.instance.collection('Items');
 
   TextStyle defaultHintStyle() {
     return TextStyle(
         color: Colors.white.withOpacity(0.5),
         fontWeight: FontWeight.bold,
         fontSize: 12.0);
+  }
+
+  Future<void> addItem() {
+    return itemsCollection.add(item);
   }
 
   @override
@@ -40,6 +48,11 @@ class PostReview extends StatelessWidget {
                 width: double.infinity,
                 padding: EdgeInsets.only(bottom: 8.0),
                 child: Text("Brand: ${item['brand']}"),
+              ),
+              Container(
+                width: double.infinity,
+                padding: EdgeInsets.only(bottom: 8.0),
+                child: Text("Model: ${item['model']}"),
               ),
               Container(
                 width: double.infinity,
@@ -121,7 +134,9 @@ class PostReview extends StatelessWidget {
                       Container(
                         padding: EdgeInsets.only(right: 4.0),
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            addItem();
+                          },
                           child: Text('Submit'),
                         ),
                       ),
@@ -145,11 +160,3 @@ class PostReview extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-
-
-
