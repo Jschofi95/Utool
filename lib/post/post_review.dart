@@ -135,7 +135,15 @@ class PostReview extends StatelessWidget {
                         padding: EdgeInsets.only(right: 4.0),
                         child: ElevatedButton(
                           onPressed: () {
-                            addItem();
+                            try {
+                              addItem();
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (_) => HomePage()),
+                              );
+                            } catch (e) {
+                              print(e.toString());
+                            }
                           },
                           child: Text('Submit'),
                         ),

@@ -6,6 +6,14 @@ import 'package:utool/item/item_data.dart';
 import 'post_review.dart';
 import 'package:utool/enums/enums.dart';
 
+/* 
+  TODO
+  - Add more format checks to input
+  - Add drop down boxes instead of raw text input to useType and interval boxes (user should only be able to choose options from the enums file)
+  - Make it so delivery fee box only shows up if the user chose delivery as an option
+  - Find more stuff to fix
+*/
+
 class Post extends StatefulWidget {
   const Post({Key? key}) : super(key: key);
 
@@ -125,6 +133,10 @@ class _Post extends State<Post> {
         !containsOnlyCharacters(brandController.text)) {
       print('Brand is incorrect format');
       return 2;
+    } else if (modelController.text.isEmpty ||
+        !containsOnlyLettersAndNumbers(modelController.text)) {
+      print('Model is incorrect format');
+      return 2;
     } else if (priceController.text.isEmpty ||
         !containsOnlyNumbers(priceController.text)) {
       print('Price is incorrect format');
@@ -145,7 +157,8 @@ class _Post extends State<Post> {
         !containsOnlyLettersAndNumbers(addressLine1Controller.text)) {
       print('Address Line 1 incorrect format');
       return 7;
-    } else if (addressLine2Controller.text.isNotEmpty && !containsOnlyLettersAndNumbers(addressLine2Controller.text)) {
+    } else if (addressLine2Controller.text.isNotEmpty &&
+        !containsOnlyLettersAndNumbers(addressLine2Controller.text)) {
       print('Address line 2 is incorrect format');
       return 8;
     } else if (cityController.text.isEmpty ||
@@ -217,6 +230,17 @@ class _Post extends State<Post> {
                 decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Brand',
+                    hintText: 'Enter brand'),
+              ),
+            ),
+
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              child: TextField(
+                controller: modelController,
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Model',
                     hintText: 'Enter brand'),
               ),
             ),
@@ -335,8 +359,8 @@ class _Post extends State<Post> {
                 controller: deliveryFeeController,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(),
-                    labelText: 'Would you pay deliveryFee',
-                    hintText: 'Enter Y for yes, N for no'),
+                    labelText: 'Delivery Fee',
+                    hintText: 'Enter number'),
               ),
             ),
 
