@@ -97,11 +97,11 @@ class _LoginPageState extends State<LoginPage> {
               decoration: BoxDecoration(
                   color: Colors.blue, borderRadius: BorderRadius.circular(20)),
               child: TextButton(
-                onPressed: signIn,
-                /*
-                on
-                on (
-                */
+                onPressed: () {
+                  signIn();
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (_) => HomePage()));
+                },
                 child: const Text(
                   'Login',
                   style: TextStyle(color: Colors.white, fontSize: 25),
@@ -128,9 +128,34 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Future signIn() async {
+    /*
     await FirebaseAuth.instance.signInWithEmailAndPassword(
       email: _email,
       password: _password,
     );
+    
+  */
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: _email,
+        password: _password,
+      );
+    } on FirebaseAuthException {
+      print("auth error");
+    }
   }
 }
+
+/*
+on FirebaseAuthException catch (e) {
+                      if (e.code == 'weak-password') {
+                        print('The password provided is too weak.');
+                      } else if (e.code == 'email-already-in-use') {
+                        print('The account already exists for that email.');
+                      } else {
+                        print(e.message);
+                      }
+                    } catch (e) {
+                      print(e);
+                    }
+*/
