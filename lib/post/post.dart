@@ -191,11 +191,12 @@ class _Post extends State<Post> {
         !containsOnlyNumbers(zipCodeController.text)) {
       print('zipCode is incorrect format');
       return 11;
-    } else if (deliveryFeeController.text.isEmpty ||
+    } /*else if (deliveryFeeController.text.isEmpty ||
         !containsOnlyNumbers(deliveryFeeController.text)) {
       print('Delivery fee is incorrect format');
       return 12;
-    } else if (hoursController.text.isEmpty ||
+    }*/
+    else if (hoursController.text.isEmpty ||
         !containsOnlyNumbers(hoursController.text)) {
       print('Hours is incorrect format');
       return 13;
@@ -207,6 +208,7 @@ class _Post extends State<Post> {
     return 0;
   }
 
+  bool showDeliveryFeeField = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -372,6 +374,7 @@ class _Post extends State<Post> {
                 onChanged: (value) {
                   setState(() {
                     item['useType'] = value!;
+                    showDeliveryFeeField = (value == 'DELIVERY');
                   });
                 },
               ),
@@ -386,6 +389,35 @@ class _Post extends State<Post> {
                     border: OutlineInputBorder(),
                     labelText: 'Use Type',
                     hintText: 'Enter use type'),
+              ),
+            ),*/
+
+            //deliveryFee
+            if (showDeliveryFeeField)
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10),
+                child: TextField(
+                  controller: deliveryFeeController,
+                  keyboardType: TextInputType.numberWithOptions(decimal: true),
+                  decoration: InputDecoration(
+                    labelText: 'Delivery Fee',
+                    border: OutlineInputBorder(),
+                  ),
+                ),
+              ),
+
+            /* Text(
+              'Delivery Fee',
+              style: const TextStyle(fontSize: 20, color: Colors.blue),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              child: TextField(
+                controller: deliveryFeeController,
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Delivery Fee',
+                    hintText: 'Enter number'),
               ),
             ),*/
 
@@ -683,22 +715,6 @@ class _Post extends State<Post> {
                 controller: zipCodeController,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(), hintText: 'Enter zip code'),
-              ),
-            ),
-
-            //deliveryFee
-            Text(
-              'Delivery Fee',
-              style: const TextStyle(fontSize: 20, color: Colors.blue),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10),
-              child: TextField(
-                controller: deliveryFeeController,
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Delivery Fee',
-                    hintText: 'Enter number'),
               ),
             ),
 
