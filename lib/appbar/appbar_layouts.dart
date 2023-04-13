@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:utool/sort_filter/filter.dart';
 
 class AppBarLayouts {
   /*
@@ -18,7 +19,12 @@ class AppBarLayouts {
       title: const Text("UTool"),
       centerTitle: true,
       leading: IconButton(
-        onPressed: () {},
+        onPressed: () {
+          //Navigator.push(
+          //context,
+          //MaterialPageRoute(builder: (context) => const Filter()),
+          //);
+        },
         icon: const Icon(Icons.menu),
       ),
       actions: <Widget>[
@@ -28,25 +34,95 @@ class AppBarLayouts {
             showSearch(context: context, delegate: SearchBar());
           },
         ),
+
+        /*
         PopupMenuButton(
           itemBuilder: (BuildContext context) {
             return [
               PopupMenuItem(
-                child: Text('Placeholder Item 1'),
                 value: 1,
+                child: SizedBox(child: Text('Sort By')),
               ),
               PopupMenuItem(
-                child: Text('Placeholder Item 2'),
                 value: 2,
+                child: SizedBox(child: Text('\$ - \$\$\$')),
               ),
               PopupMenuItem(
-                child: Text('Placeholder Item 3'),
                 value: 3,
+                child: SizedBox(child: Text('\$\$\$ - \$')),
               ),
+              PopupMenuItem(
+                value: 4,
+                child: SizedBox(child: Text('Closest - Furthest')),
+              ),
+              PopupMenuItem(
+                value: 5,
+                child: SizedBox(child: Text('Top Rated - Worst Rated')),
+              ),
+              
+              
             ];
           },
           icon: Icon(Icons.sort),
         ),
+        */
+
+        PopupMenuButton(
+          itemBuilder: (BuildContext context) {
+            return [
+              PopupMenuItem(
+                  value: 1,
+                  child: PopupMenuButton(
+                      itemBuilder: (BuildContext context) {
+                        return [
+                          PopupMenuItem(
+                            value: 2,
+                            child: SizedBox(child: Text('\$ - \$\$\$')),
+                          ),
+                          PopupMenuItem(
+                            value: 3,
+                            child: SizedBox(child: Text('\$\$\$ - \$')),
+                          ),
+                          PopupMenuItem(
+                            value: 4,
+                            child: SizedBox(child: Text('Closest - Furthest')),
+                          ),
+                          PopupMenuItem(
+                            value: 5,
+                            child: SizedBox(
+                                child: Text('Top Rated - Worst Rated')),
+                          ),
+                        ];
+                      },
+                      child: Text('Sort By'))),
+              PopupMenuItem(
+                  value: 2,
+                  /*
+                  child: PopupMenuButton(
+                      itemBuilder: (BuildContext context) {
+                        return [
+                          PopupMenuItem(
+                            value: 1,
+                            child: SizedBox(child: Text('Sort By')),
+                            
+                          ),
+                        ];
+                      },
+                      */
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const Filter()),
+                    );
+                    //need to figure out how to send user to filter page
+                  },
+                  child: Text(
+                    'Filter',
+                  )),
+            ];
+          },
+          icon: Icon(Icons.sort_rounded),
+        )
       ],
       backgroundColor: Colors.orangeAccent,
       shape: const RoundedRectangleBorder(
