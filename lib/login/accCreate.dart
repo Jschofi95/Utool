@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:utool/login/login.dart';
 import 'package:utool/login/auth.dart';
+import 'package:utool/user/ProfilefillingPage.dart';
 
 class AccountCreationPage extends StatefulWidget {
   @override
@@ -13,6 +14,7 @@ class _AccountCreationPageState extends State<AccountCreationPage> {
   final _formKey = GlobalKey<FormState>();
   String _email = '';
   String _password = '';
+  String? _errorMessage;
 
   @override
   Widget build(BuildContext context) {
@@ -57,15 +59,18 @@ class _AccountCreationPageState extends State<AccountCreationPage> {
                   });
                 },
               ),
-              SizedBox(height: 32.0),
+              SizedBox(height: 16.0),
+              Text(
+                _errorMessage ?? '',
+                style: TextStyle(
+                  color: Colors.red,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(height: 16.0),
               TextButton(
                 child: Text('Create Account'),
                 onPressed: () async {
-                  // Add code to create account with _email and _password
-                  // You can use Firebase Auth, for example
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => LoginPage()));
-
                   if (_formKey.currentState!.validate()) {
                     try {
                       UserCredential userCredential = await FirebaseAuth
@@ -75,16 +80,29 @@ class _AccountCreationPageState extends State<AccountCreationPage> {
                         password: _password,
                       );
                       // Account created successfully
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (_) => profileFillingPage()),
+                      );
                     } on FirebaseAuthException catch (e) {
                       if (e.code == 'weak-password') {
-                        print('The password provided is too weak.');
+                        setState(() {
+                          _errorMessage = 'The password provided is too weak.';
+                        });
                       } else if (e.code == 'email-already-in-use') {
-                        print('The account already exists for that email.');
+                        setState(() {
+                          _errorMessage =
+                              'The account already exists for that email.';
+                        });
                       } else {
-                        print(e.message);
+                        setState(() {
+                          _errorMessage = e.message;
+                        });
                       }
                     } catch (e) {
-                      print(e);
+                      setState(() {
+                        _errorMessage = e.toString();
+                      });
                     }
                   }
                 },
