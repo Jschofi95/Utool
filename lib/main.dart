@@ -33,7 +33,8 @@ class MyApp extends StatelessWidget {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             // return LoginPage();
-            return HomePage();
+
+            return LoginPage();
           } else {
             return SplashScreen();
           }
