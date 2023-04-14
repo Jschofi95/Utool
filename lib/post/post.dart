@@ -224,7 +224,7 @@ class _Post extends State<Post> {
               style: const TextStyle(fontSize: 20, color: Colors.blue),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10),
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               child: TextField(
                 controller: typeController,
                 decoration: InputDecoration(
@@ -251,7 +251,7 @@ class _Post extends State<Post> {
               style: const TextStyle(fontSize: 20, color: Colors.blue),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10),
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               child: TextField(
                 controller: brandController,
                 decoration: InputDecoration(
@@ -264,7 +264,7 @@ class _Post extends State<Post> {
               style: const TextStyle(fontSize: 20, color: Colors.blue),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10),
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               child: TextField(
                 controller: modelController,
                 decoration: InputDecoration(
@@ -278,7 +278,7 @@ class _Post extends State<Post> {
               style: const TextStyle(fontSize: 20, color: Colors.blue),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10),
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               child: TextField(
                 controller: priceController,
                 decoration: InputDecoration(
@@ -307,9 +307,18 @@ class _Post extends State<Post> {
               style: const TextStyle(fontSize: 20, color: Colors.blue),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10),
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               child: DropdownButtonFormField<String>(
-                items: [
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    borderSide: BorderSide(
+                      color: Colors.blue,
+                      width: 2.0,
+                    ),
+                  ),
+                ),
+                items: const [
                   DropdownMenuItem(
                     value: 'HOURLY',
                     child: Text('Hourly'),
@@ -341,7 +350,7 @@ class _Post extends State<Post> {
               style: const TextStyle(fontSize: 20, color: Colors.blue),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10),
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               child: TextField(
                 controller: conditionController,
                 decoration: InputDecoration(
@@ -355,9 +364,18 @@ class _Post extends State<Post> {
               style: const TextStyle(fontSize: 20, color: Colors.blue),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10),
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               child: DropdownButtonFormField<String>(
-                items: [
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    borderSide: BorderSide(
+                      color: Colors.blue,
+                      width: 2.0,
+                    ),
+                  ),
+                ),
+                items: const [
                   DropdownMenuItem(
                     value: 'DELIVERY',
                     child: Text('Delivery'),
@@ -395,7 +413,7 @@ class _Post extends State<Post> {
             //deliveryFee
             if (showDeliveryFeeField)
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10),
+                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                 child: TextField(
                   controller: deliveryFeeController,
                   keyboardType: TextInputType.numberWithOptions(decimal: true),
@@ -427,7 +445,7 @@ class _Post extends State<Post> {
               style: const TextStyle(fontSize: 20, color: Colors.blue),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10),
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               child: TextField(
                 controller: addressLine1Controller,
                 decoration: InputDecoration(
@@ -440,7 +458,7 @@ class _Post extends State<Post> {
               style: const TextStyle(fontSize: 20, color: Colors.blue),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10),
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               child: TextField(
                 controller: addressLine2Controller,
                 decoration: InputDecoration(
@@ -454,7 +472,7 @@ class _Post extends State<Post> {
               style: const TextStyle(fontSize: 20, color: Colors.blue),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10),
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               child: TextField(
                 controller: cityController,
                 decoration: InputDecoration(
@@ -468,9 +486,18 @@ class _Post extends State<Post> {
               style: const TextStyle(fontSize: 20, color: Colors.blue),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10),
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               child: DropdownButtonFormField<String>(
-                items: [
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    borderSide: BorderSide(
+                      color: Colors.blue,
+                      width: 2.0,
+                    ),
+                  ),
+                ),
+                items: const [
                   DropdownMenuItem(
                     value: 'AL',
                     child: Text('Alabama'),
@@ -710,7 +737,7 @@ class _Post extends State<Post> {
               style: const TextStyle(fontSize: 20, color: Colors.blue),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10),
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               child: TextField(
                 controller: zipCodeController,
                 decoration: InputDecoration(
@@ -724,7 +751,7 @@ class _Post extends State<Post> {
               style: const TextStyle(fontSize: 20, color: Colors.blue),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10),
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               child: TextField(
                 controller: hoursController,
                 decoration: InputDecoration(
@@ -734,11 +761,11 @@ class _Post extends State<Post> {
 
             //description
             Text(
-              'Desctiption',
+              'Description',
               style: const TextStyle(fontSize: 20, color: Colors.blue),
             ),
             Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10),
+                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                 child: SizedBox(
                   height: 100,
                   child: TextField(
