@@ -18,6 +18,8 @@ class _LoginPageState extends State<LoginPage> {
   String _email = '';
   String _password = '';
 
+  bool isUserAuthenticated = false;
+
   @override
   void dispose() {
     emailController.dispose();
@@ -29,7 +31,6 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text("Login"),
       ),
@@ -74,7 +75,7 @@ class _LoginPageState extends State<LoginPage> {
                   });
                 },
                 obscureText: true,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Password',
                     hintText: 'Enter secure password'),
@@ -99,8 +100,11 @@ class _LoginPageState extends State<LoginPage> {
               child: TextButton(
                 onPressed: () {
                   signIn();
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => HomePage()));
+                  if (isUserAuthenticated) {
+                    // If username and password are in database, go to home page
+                    Navigator.push(
+                        context, MaterialPageRoute(builder: (_) => HomePage()));
+                  }
                 },
                 child: const Text(
                   'Login',
@@ -128,21 +132,26 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Future signIn() async {
-    /*
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-      email: _email,
-      password: _password,
+    const errorMessage = SnackBar(
+      content: Text('Incorrect format for username or password'),
+      behavior: SnackBarBehavior.floating,
+      margin: EdgeInsets.only(bottom: 50.0, left: 50.0, right: 50.0),
     );
-    
-  */
+
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: _email,
         password: _password,
       );
+      isUserAuthenticated = true;
     } on FirebaseAuthException {
-      print("auth error");
+      ScaffoldMessenger.of(context).showSnackBar(errorMessage);
     }
+
+    // await FirebaseAuth.instance.signInWithEmailAndPassword(
+    //   email: _email,
+    //   password: _password,
+    // );
   }
 }
 

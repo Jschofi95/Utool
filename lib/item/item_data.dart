@@ -23,12 +23,12 @@ class ItemData {
   String addressLine2;
   String city;
   String state;
-  int zipCode;
+  double zipCode;
   double deliveryFee;
   double hours;
   String description;
   //List<String> imgLinks = ['assets/woodchipper_placeholder.png'];
-  List<String> imgLinks;
+  String imgLinks;
 
   ItemData({
     required this.id,
