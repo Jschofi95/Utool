@@ -11,6 +11,11 @@ class ItemDetails extends StatelessWidget {
     required this.item,
   }) : super(key: key);
 
+  String getDisplayPicture() {
+    if (item.imgLinks.isNotEmpty) return item.imgLinks;
+    return 'assets/no_image.png';
+  }
+
   String formatRentDuration(Intervals interval) {
     if (interval.name == 'HOURLY') return 'hour';
     if (interval.name == 'DAILY') return 'day';
@@ -48,10 +53,12 @@ class ItemDetails extends StatelessWidget {
           ),
           body: Column(
             children: <Widget>[
-              Image.asset(
-                item.imgLinks[0],
+              Container(
                 width: 150,
                 height: 150,
+                child: Image.asset(
+                  getDisplayPicture(),
+                ),
               ),
               const SizedBox(
                 height: 40,

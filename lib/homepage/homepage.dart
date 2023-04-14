@@ -264,3 +264,72 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
+/*
+List<ItemData> sort(List<ItemData> items, int mode) {
+  //mode determines how we want the list sorted
+  //using buble sort for all modes, slow but simple to write
+  int len = items.length;
+
+  if (mode == 0) {
+    return items;
+  }
+  else if (mode == 1) {
+    //sort by $-$$$
+
+    for (int i = 0; i < len - 1; i++) {
+      for (int j = 0; j < len - i - 1; j++) {
+        if (items.price[j] > items.price[j + 1]) {
+          ItemData temp = items[j];
+          items[j] = items[j + 1];
+          items[j + 1] = temp;
+        }
+      }
+    }
+    return (items);
+  }
+  else if (mode == 2) {
+    //sort by $$$-$
+
+    for (int i = 0; i < len - 1; i++) {
+      for (int j = 0; j < len - i - 1; j++) {
+        if (items.price[j] < items.price[j + 1]) {
+          ItemData temp = items[j];
+          items[j] = items[j + 1];
+          items[j + 1] = temp;
+        }
+      }
+    }
+    return (items);
+  }
+  else if (mode == 2) {
+    //sort by distance
+
+    for (int i = 0; i < len - 1; i++) {
+      for (int j = 0; j < len - i - 1; j++) {
+        if (items.distance[j] > items.distance[j + 1]) {
+          ItemData temp = items[j];
+          items[j] = items[j + 1];
+          items[j + 1] = temp;
+        }
+      }
+    }
+    return (items);
+  }
+  else if (mode == 2) {
+    //sort by distance
+
+    for (int i = 0; i < len - 1; i++) {
+      for (int j = 0; j < len - i - 1; j++) {
+        if (items.rating[j] < items.rating[j + 1]) {
+          ItemData temp = items[j];
+          items[j] = items[j + 1];
+          items[j + 1] = temp;
+        }
+      }
+    }
+    return (items);
+  }else
+    return items;
+}
+*/

@@ -27,7 +27,7 @@ class _Post extends State<Post> {
   final brandController = TextEditingController();
   final modelController = TextEditingController();
   final priceController = TextEditingController();
-  final rentPriceIntervalController = TextEditingController();
+  late var rentPriceIntervalController = TextEditingController();
   final conditionController = TextEditingController();
   final useTypeController = TextEditingController();
   final addressLine1Controller = TextEditingController();
@@ -65,13 +65,13 @@ class _Post extends State<Post> {
     item['brand'] = brandController.text;
     item['model'] = modelController.text;
     item['price'] = dynToDouble(priceController.text);
-    item['rentPriceInterval'] = rentPriceIntervalController.text;
+    //item['rentPriceInterval'] = rentPriceIntervalController.text;
     item['condition'] = conditionController.text;
-    item['useType'] = useTypeController.text;
+    //item['useType'] = useTypeController.text;
     item['addressLine1'] = addressLine1Controller.text;
     item['addressLine2'] = addressLine2Controller.text;
     item['city'] = cityController.text;
-    item['state'] = stateController.text;
+    //item['state'] = stateController.text;
     item['zipCode'] = dynToDouble(zipCodeController.text);
     item['deliveryFee'] = dynToDouble(deliveryFeeController.text);
     item['hours'] = dynToDouble(hoursController.text);
@@ -108,7 +108,7 @@ class _Post extends State<Post> {
     return numberRegex.hasMatch(str);
   }
 
-  bool isCorrectRentPriceInterval(String str) {
+  /*bool isCorrectRentPriceInterval(String str) {
     if (str == 'HOURLY' ||
         str == 'DAILY' ||
         str == 'WEEKLY' ||
@@ -121,6 +121,21 @@ class _Post extends State<Post> {
       return true;
     return false;
   }
+
+  bool isCorrectState(String str) {
+    if (str == 'AL' || str == 'AK' || str == 'AZ' || str == 'AR' || str == 'CA'
+      || str == 'CO' || str == 'CT' || str == 'DE' || str == 'DC' || str == 'FL'
+      || str == 'GA' || str == 'HI' || str == 'ID' || str == 'IL' || str == 'IN'
+      || str == 'IA' || str == 'KS' || str == 'KY' || str == 'LA' || str == 'ME'
+      || str == 'MD' || str == 'MA' || str == 'MI' || str == 'MN' || str == 'MS'
+      || str == 'MO' || str == 'MT' || str == 'NE' || str == 'NV' || str == 'NH'
+      || str == 'NJ' || str == 'NM' || str == 'NY' || str == 'NC' || str == 'ND'
+      || str == 'OH' || str == 'OK' || str == 'OR' || str == 'PA' || str == 'PR'
+      || str == 'RI' || str == 'SC' || str == 'SD' || str == 'TN' || str == 'TX'
+      || str == 'UT' || str == 'VT' || str == 'VA' || str == 'VI' || str == 'WA'
+      || str == 'WV' || str == 'WI' || str == 'WY') return true;
+    return false;
+  }*/
 
   // Check that all fields contain valid input
   int checkIfAllFieldsValid() {
@@ -141,19 +156,21 @@ class _Post extends State<Post> {
         !containsOnlyNumbers(priceController.text)) {
       print('Price is incorrect format');
       return 3;
-    } else if (rentPriceIntervalController.text.isEmpty ||
+    } /*else if (rentPriceIntervalController.text.isEmpty ||
         !isCorrectRentPriceInterval(rentPriceIntervalController.text)) {
       print(' rentPriceInterval is incorrect format');
       return 4;
-    } else if (conditionController.text.isEmpty ||
+    } */
+    else if (conditionController.text.isEmpty ||
         !containsOnlyCharacters(conditionController.text)) {
       print('Condition is incorrect format');
       return 5;
-    } else if (useTypeController.text.isEmpty ||
+    } /*else if (useTypeController.text.isEmpty ||
         !isCorrectUseType(useTypeController.text)) {
       print('useType is incorrect format');
       return 6;
-    } else if (addressLine1Controller.text.isEmpty ||
+    }*/
+    else if (addressLine1Controller.text.isEmpty ||
         !containsOnlyLettersAndNumbers(addressLine1Controller.text)) {
       print('Address Line 1 incorrect format');
       return 7;
@@ -165,19 +182,21 @@ class _Post extends State<Post> {
         !containsOnlyCharacters(cityController.text)) {
       print('City controller is incorrect format');
       return 9;
-    } else if (stateController.text.isEmpty ||
+    } /*else if (stateController.text.isEmpty ||
         !containsOnlyCharacters(stateController.text)) {
       print('State is incorrect format');
       return 10;
-    } else if (zipCodeController.text.isEmpty ||
+    }*/
+    else if (zipCodeController.text.isEmpty ||
         !containsOnlyNumbers(zipCodeController.text)) {
       print('zipCode is incorrect format');
       return 11;
-    } else if (deliveryFeeController.text.isEmpty ||
+    } /*else if (deliveryFeeController.text.isEmpty ||
         !containsOnlyNumbers(deliveryFeeController.text)) {
       print('Delivery fee is incorrect format');
       return 12;
-    } else if (hoursController.text.isEmpty ||
+    }*/
+    else if (hoursController.text.isEmpty ||
         !containsOnlyNumbers(hoursController.text)) {
       print('Hours is incorrect format');
       return 13;
@@ -189,6 +208,7 @@ class _Post extends State<Post> {
     return 0;
   }
 
+  bool showDeliveryFeeField = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -198,14 +218,18 @@ class _Post extends State<Post> {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
+            //TYPE
+            Text(
+              'Tool Type',
+              style: const TextStyle(fontSize: 20, color: Colors.blue),
+            ),
             Padding(
-              //type
-              padding: EdgeInsets.symmetric(horizontal: 10),
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               child: TextField(
                 controller: typeController,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(),
-                    labelText: 'Tool Type',
+                    //labelText: 'Tool Type',
                     hintText: 'Enter type'),
               ),
             ),
@@ -221,68 +245,161 @@ class _Post extends State<Post> {
             //         hintText: 'Enter image'),
             //   ),
             // ),
-
-            //brand
+            //Brand
+            Text(
+              'Brand',
+              style: const TextStyle(fontSize: 20, color: Colors.blue),
+            ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10),
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               child: TextField(
                 controller: brandController,
                 decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Brand',
-                    hintText: 'Enter brand'),
+                    border: OutlineInputBorder(), hintText: 'Enter brand'),
               ),
             ),
-
+            //Model
+            Text(
+              'Model',
+              style: const TextStyle(fontSize: 20, color: Colors.blue),
+            ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10),
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               child: TextField(
                 controller: modelController,
                 decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Model',
-                    hintText: 'Enter brand'),
+                    border: OutlineInputBorder(), hintText: 'Enter Model'),
               ),
             ),
 
             //price
+            Text(
+              'Price',
+              style: const TextStyle(fontSize: 20, color: Colors.blue),
+            ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10),
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               child: TextField(
                 controller: priceController,
                 decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Price',
-                    hintText: 'Enter price // per day'),
+                    border: OutlineInputBorder(), hintText: 'Enter price'),
               ),
             ),
 
             //rentPriceInterval
-            Padding(
+            /*Padding(
               padding: EdgeInsets.symmetric(horizontal: 10),
               child: TextField(
                 controller: rentPriceIntervalController,
+
                 decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Rent Price Interval',
-                    hintText: 'Enter price Interval'),
+                    hintText: 'Enter price Interval'
+                ),
+
+
+              ),
+            ),*/
+            //price interval
+            Text(
+              'Price Interval',
+              style: const TextStyle(fontSize: 20, color: Colors.blue),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              child: DropdownButtonFormField<String>(
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    borderSide: BorderSide(
+                      color: Colors.blue,
+                      width: 2.0,
+                    ),
+                  ),
+                ),
+                items: const [
+                  DropdownMenuItem(
+                    value: 'HOURLY',
+                    child: Text('Hourly'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'DAILY',
+                    child: Text('Daily'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'WEEKLY',
+                    child: Text('Weekly'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'MONTHLY',
+                    child: Text('Monthly'),
+                  ),
+                ],
+                onChanged: (value) {
+                  setState(() {
+                    item['rentPriceInterval'] = value!;
+                  });
+                },
               ),
             ),
 
             //condition
+            Text(
+              'Condition',
+              style: const TextStyle(fontSize: 20, color: Colors.blue),
+            ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10),
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               child: TextField(
                 controller: conditionController,
                 decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Condition',
-                    hintText: 'Enter % of new'),
+                    border: OutlineInputBorder(), hintText: 'Enter Condition'),
+              ),
+            ),
+
+            //UseType
+            Text(
+              'UseType',
+              style: const TextStyle(fontSize: 20, color: Colors.blue),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              child: DropdownButtonFormField<String>(
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    borderSide: BorderSide(
+                      color: Colors.blue,
+                      width: 2.0,
+                    ),
+                  ),
+                ),
+                items: const [
+                  DropdownMenuItem(
+                    value: 'DELIVERY',
+                    child: Text('Delivery'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'PICK_UP',
+                    child: Text('Pick up'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'STORE_USE_ONLY',
+                    child: Text('store use only'),
+                  ),
+                ],
+                onChanged: (value) {
+                  setState(() {
+                    item['useType'] = value!;
+                    showDeliveryFeeField = (value == 'DELIVERY');
+                  });
+                },
               ),
             ),
 
             //useType
-            Padding(
+            /* Padding(
               padding: EdgeInsets.symmetric(horizontal: 10),
               child: TextField(
                 controller: useTypeController,
@@ -291,68 +408,26 @@ class _Post extends State<Post> {
                     labelText: 'Use Type',
                     hintText: 'Enter use type'),
               ),
-            ),
-
-            //address
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10),
-              child: TextField(
-                controller: addressLine1Controller,
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Address line 1',
-                    hintText: 'Enter address'),
-              ),
-            ),
-
-            //address2
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10),
-              child: TextField(
-                controller: addressLine2Controller,
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Address line 2',
-                    hintText: 'Enter address OPTIONAL'),
-              ),
-            ),
-            //city
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10),
-              child: TextField(
-                controller: cityController,
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'City',
-                    hintText: 'Enter City'),
-              ),
-            ),
-
-            //state
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10),
-              child: TextField(
-                controller: stateController,
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'State',
-                    hintText: 'Enter State'),
-              ),
-            ),
-
-            //zipCode
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10),
-              child: TextField(
-                controller: zipCodeController,
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Zip Code',
-                    hintText: 'Enter zip code'),
-              ),
-            ),
+            ),*/
 
             //deliveryFee
+            if (showDeliveryFeeField)
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                child: TextField(
+                  controller: deliveryFeeController,
+                  keyboardType: TextInputType.numberWithOptions(decimal: true),
+                  decoration: InputDecoration(
+                    labelText: 'Delivery Fee',
+                    border: OutlineInputBorder(),
+                  ),
+                ),
+              ),
+
+            /* Text(
+              'Delivery Fee',
+              style: const TextStyle(fontSize: 20, color: Colors.blue),
+            ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 10),
               child: TextField(
@@ -362,31 +437,344 @@ class _Post extends State<Post> {
                     labelText: 'Delivery Fee',
                     hintText: 'Enter number'),
               ),
+            ),*/
+
+            //address1
+            Text(
+              'Address 1',
+              style: const TextStyle(fontSize: 20, color: Colors.blue),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              child: TextField(
+                controller: addressLine1Controller,
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(), hintText: 'Enter address'),
+              ),
+            ),
+            //address2
+            Text(
+              'Address 2',
+              style: const TextStyle(fontSize: 20, color: Colors.blue),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              child: TextField(
+                controller: addressLine2Controller,
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: 'Enter address OPTIONAL'),
+              ),
+            ),
+            //city
+            Text(
+              'City',
+              style: const TextStyle(fontSize: 20, color: Colors.blue),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              child: TextField(
+                controller: cityController,
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(), hintText: 'Enter City'),
+              ),
+            ),
+
+            //States
+            Text(
+              'State',
+              style: const TextStyle(fontSize: 20, color: Colors.blue),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              child: DropdownButtonFormField<String>(
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    borderSide: BorderSide(
+                      color: Colors.blue,
+                      width: 2.0,
+                    ),
+                  ),
+                ),
+                items: const [
+                  DropdownMenuItem(
+                    value: 'AL',
+                    child: Text('Alabama'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'AK',
+                    child: Text('Alaska'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'AZ',
+                    child: Text('Arizona'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'AR',
+                    child: Text('Arkansas'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'CA',
+                    child: Text('California'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'CO',
+                    child: Text('Colorado'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'CT',
+                    child: Text('Connecticut'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'DE',
+                    child: Text('Delaware'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'DC',
+                    child: Text('District of Columbia'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'FL',
+                    child: Text('Florida'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'GA',
+                    child: Text('Georgia'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'HI',
+                    child: Text('Hawaii'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'ID',
+                    child: Text('Idaho'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'IL',
+                    child: Text('Illinois'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'IN',
+                    child: Text('Indiana'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'IA',
+                    child: Text('Iowa'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'KS',
+                    child: Text('Kansas'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'KY',
+                    child: Text('Kentucky'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'LA',
+                    child: Text('Louisiana'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'ME',
+                    child: Text('Maine'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'MD',
+                    child: Text('Maryland'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'MA',
+                    child: Text('Massachusetts'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'MI',
+                    child: Text('Michigan'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'MN',
+                    child: Text('Minnesota'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'MS',
+                    child: Text('Mississippi'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'MO',
+                    child: Text('Missouri'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'MT',
+                    child: Text('Montana'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'NE',
+                    child: Text('Nebraska'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'NV',
+                    child: Text('Nevada'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'NH',
+                    child: Text('New Hampshire'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'NJ',
+                    child: Text('New Jersey'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'NM',
+                    child: Text('New Mexico'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'NY',
+                    child: Text('New York'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'NC',
+                    child: Text('North Carolina'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'ND',
+                    child: Text('North Dakota'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'OH',
+                    child: Text('Ohio'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'OK',
+                    child: Text('Oklahoma'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'OR',
+                    child: Text('Oregon'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'PA',
+                    child: Text('Pennsylvania'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'PR',
+                    child: Text('Puerto Rico'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'RI',
+                    child: Text('Rhode Island'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'SC',
+                    child: Text('South Carolina'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'SD',
+                    child: Text('South Dakota'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'TN',
+                    child: Text('Tennessee'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'TX',
+                    child: Text('Texas'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'UT',
+                    child: Text('Utah'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'VT',
+                    child: Text('Vermont'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'VA',
+                    child: Text('Virginia'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'VI',
+                    child: Text('Virgin Islands'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'WA',
+                    child: Text('Washington'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'WV',
+                    child: Text('West Virginia'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'WI',
+                    child: Text('Wisconsin'),
+                  ),
+                  DropdownMenuItem(
+                    value: 'WY',
+                    child: Text('Wyoming'),
+                  ),
+                ],
+                onChanged: (value) {
+                  setState(() {
+                    item['state'] = value!;
+                  });
+                },
+              ),
+            ),
+
+            //state
+            /*Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              child: TextField(
+                controller: stateController,
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'State',
+                    hintText: 'Enter State'),
+              ),
+            ),*/
+
+            //zipCode
+            Text(
+              'Zip Code',
+              style: const TextStyle(fontSize: 20, color: Colors.blue),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              child: TextField(
+                controller: zipCodeController,
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(), hintText: 'Enter zip code'),
+              ),
             ),
 
             //hours
+            Text(
+              'Hours',
+              style: const TextStyle(fontSize: 20, color: Colors.blue),
+            ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10),
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               child: TextField(
                 controller: hoursController,
                 decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Hours on tool',
-                    hintText: 'Enter hours'),
+                    border: OutlineInputBorder(), hintText: 'Enter hours'),
               ),
             ),
 
             //description
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10),
-              child: TextField(
-                controller: descriptionController,
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Discription',
-                    hintText: 'Enter discription'),
-              ),
+            Text(
+              'Description',
+              style: const TextStyle(fontSize: 20, color: Colors.blue),
             ),
+            Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                child: SizedBox(
+                  height: 100,
+                  child: TextField(
+                    controller: descriptionController,
+                    decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        hintText: 'Enter discription'),
+                  ),
+                )),
 
             TextButton(
               onPressed: () {
