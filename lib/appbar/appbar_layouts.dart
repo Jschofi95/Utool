@@ -71,24 +71,23 @@ class AppBarLayouts {
           itemBuilder: (BuildContext context) {
             return [
               PopupMenuItem(
-                  value: 1,
                   child: PopupMenuButton(
                       itemBuilder: (BuildContext context) {
                         return [
                           PopupMenuItem(
-                            value: 2,
+                            value: 1,
                             child: SizedBox(child: Text('\$ - \$\$\$')),
                           ),
                           PopupMenuItem(
-                            value: 3,
+                            value: 2,
                             child: SizedBox(child: Text('\$\$\$ - \$')),
                           ),
                           PopupMenuItem(
-                            value: 4,
+                            value: 3,
                             child: SizedBox(child: Text('Closest - Furthest')),
                           ),
                           PopupMenuItem(
-                            value: 5,
+                            value: 4,
                             child: SizedBox(
                                 child: Text('Top Rated - Worst Rated')),
                           ),
@@ -96,7 +95,6 @@ class AppBarLayouts {
                       },
                       child: Text('Sort By'))),
               PopupMenuItem(
-                  value: 2,
                   /*
                   child: PopupMenuButton(
                       itemBuilder: (BuildContext context) {
