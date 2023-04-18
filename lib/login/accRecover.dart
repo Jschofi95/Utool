@@ -9,7 +9,24 @@ class AccountRecoverPage extends StatefulWidget {
 class _AccountRecoverPageState extends State<AccountRecoverPage> {
   final _formKey = GlobalKey<FormState>();
   String _email = '';
-  String _password = '';
+
+  Future<void> _recoverAccount() async {
+    try {
+      await FirebaseAuth.instance.sendPasswordResetEmail(email: _email);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('A password reset link has been sent to your email.'),
+        ),
+      );
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('An error occurred. Please try again.'),
+        ),
+      );
+      print(e);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,27 +56,12 @@ class _AccountRecoverPageState extends State<AccountRecoverPage> {
                 },
               ),
               SizedBox(height: 16.0),
-              TextFormField(
-                obscureText: true,
-                decoration: InputDecoration(labelText: 'Password'),
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Please enter your password';
-                  }
-                  return null;
-                },
-                onChanged: (value) {
-                  setState(() {
-                    _password = value;
-                  });
-                },
-              ),
-              SizedBox(height: 32.0),
               TextButton(
-                child: Text('Create Account'),
+                child: Text('Recover Account'),
                 onPressed: () {
-                  // Add code to create account with _email and _password
-                  // You can use Firebase Auth, for example
+                  if (_formKey.currentState!.validate()) {
+                    _recoverAccount();
+                  }
                 },
               ),
             ],

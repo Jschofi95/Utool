@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/services.dart';
 
 class profileFillingPage extends StatefulWidget {
   @override
@@ -38,7 +39,7 @@ class _profileFillingPageState extends State<profileFillingPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Complete Your Profile'),
+        title: Text('Profile'),
       ),
       body: Padding(
         padding: EdgeInsets.all(16.0),
@@ -81,9 +82,15 @@ class _profileFillingPageState extends State<profileFillingPage> {
                 TextFormField(
                   decoration: InputDecoration(labelText: 'Phone Number'),
                   keyboardType: TextInputType.phone,
+                  inputFormatters: [
+                    FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+                    LengthLimitingTextInputFormatter(10),
+                  ],
                   validator: (value) {
                     if (value!.isEmpty) {
                       return 'Please enter your phone number';
+                    } else if (value.length < 10) {
+                      return 'Please enter a valid 10-digit phone number';
                     }
                     return null;
                   },

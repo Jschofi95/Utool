@@ -13,6 +13,7 @@ import 'package:utool/enums/enums.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:utool/message/message.dart';
 import 'package:utool/post/post.dart';
+import 'package:utool/user/profileFillingPage.dart';
 import 'package:utool/user/user_profile.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -256,8 +257,8 @@ class _HomePageState extends State<HomePage> {
           }
           // User button click
           else if (i == 2) {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (_) => UserProfile()));
+            Navigator.push(context,
+                MaterialPageRoute(builder: (_) => profileFillingPage()));
           }
         },
       ),
