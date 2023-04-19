@@ -21,11 +21,12 @@ class UserData {
   double rating; // 0-5 scale rating number
   String username;
 
-
   List<String> listings; // All item IDs for listings posted by this user
-  List<String> history; // History of all item IDs for listings viewed by this user
-  List<String> favorites; // List of all item IDs favorited listings by this user
-  
+  List<String>
+      history; // History of all item IDs for listings viewed by this user
+  List<String>
+      favorites; // List of all item IDs favorited listings by this user
+
   UserData({
     required this.id,
     required this.firstName,
@@ -43,6 +44,4 @@ class UserData {
     required this.history,
     required this.favorites,
   });
-
-
 }

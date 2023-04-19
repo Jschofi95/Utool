@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:utool/user/ProfilefillingPage.dart';
 import 'package:utool/user/user_profile.dart';
 import 'package:utool/order/order.dart';
 
@@ -26,8 +27,10 @@ class MyBottomAppBar extends StatelessWidget {
           children: <Widget>[
             ElevatedButton(
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (_) => UserProfile()));
+                  Navigator.push(
+                      context,
+                      // MaterialPageRoute(builder: (_) => UserProfile()));
+                      MaterialPageRoute(builder: (_) => profileFillingPage()));
                 },
                 style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.purple,
