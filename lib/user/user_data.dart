@@ -7,7 +7,7 @@
 */
 import 'package:utool/item/item_data.dart';
 
-class User {
+class UserData {
   int id; // Unique id for this user.
   String firstName;
   String middleName;
@@ -26,7 +26,7 @@ class User {
   List<String> history; // History of all item IDs for listings viewed by this user
   List<String> favorites; // List of all item IDs favorited listings by this user
   
-  User({
+  UserData({
     required this.id,
     required this.firstName,
     required this.middleName,
