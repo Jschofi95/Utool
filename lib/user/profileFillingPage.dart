@@ -20,8 +20,7 @@ class _profileFillingPageState extends State<profileFillingPage> {
 
     if (currentUser != null) {
       // Get the user's Firestore document reference
-      CollectionReference users =
-          FirebaseFirestore.instance.collection('users');
+      CollectionReference users = FirebaseFirestore.instance.collection('users');
       DocumentReference userDocRef = users.doc(currentUser.uid);
 
       // Save the user's profile data

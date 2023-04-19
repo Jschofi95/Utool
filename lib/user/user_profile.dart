@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:utool/homepage/homepage.dart';
 
+/*
+  This should display current user data, not ask for user data
+*/
+
 class UserProfile extends StatefulWidget {
   const UserProfile({Key? key}) : super(key: key);
 
