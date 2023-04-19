@@ -10,6 +10,14 @@ class CardLayout extends StatelessWidget {
     required this.itemData,
   });
 
+  String tryGetImageLink() {
+    if (itemData.imgLinks.isEmpty) {
+      return 'assets/no_image.png';
+    }
+
+    return itemData.imgLinks;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -18,7 +26,7 @@ class CardLayout extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             ListTile(
-              leading: Image.asset(itemData.imgLinks[0]),
+              leading: Image.asset(tryGetImageLink()),
               title: Text(itemData.type),
               subtitle: Text(
                   '\$${itemData.price} ${itemData.rentPriceInterval.name}'),
@@ -30,11 +38,13 @@ class CardLayout extends StatelessWidget {
                   child: const Text('Detail'),
                   onPressed: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (_) => ItemDetails(
-                                  item: itemData,
-                                )));
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => ItemDetails(
+                          item: itemData,
+                        ),
+                      ),
+                    );
                   },
                 ),
 

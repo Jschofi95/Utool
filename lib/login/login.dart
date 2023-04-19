@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:utool/homepage/homepage.dart';
+import 'package:utool/login/accCreate.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:utool/login/auth.dart';
+import 'package:utool/login/accRecover.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -9,12 +13,26 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  String _email = '';
+  String _password = '';
+
+  bool isUserAuthenticated = false;
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text("uTool Login Page"),
+        title: const Text("Login"),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -28,26 +46,36 @@ class _LoginPageState extends State<LoginPage> {
                     /*decoration: BoxDecoration(
                         color: Colors.red,
                         borderRadius: BorderRadius.circular(50.0)),*/
-                    child: Image.asset('assets/flutter_logo.png')),
+                    child: Image.asset('assets/uTools_logo.png')),
               ),
             ),
-            const Padding(
+            Padding(
               //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
               padding: EdgeInsets.symmetric(horizontal: 15),
               child: TextField(
+                onChanged: (value) {
+                  setState(() {
+                    _email = value;
+                  });
+                },
                 decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Email',
                     hintText: 'Enter valid email id as abc@gmail.com'),
               ),
             ),
-            const Padding(
+            Padding(
               padding:
                   EdgeInsets.only(left: 15.0, right: 15.0, top: 15, bottom: 0),
               //padding: EdgeInsets.symmetric(horizontal: 15),
               child: TextField(
+                onChanged: (value) {
+                  setState(() {
+                    _password = value;
+                  });
+                },
                 obscureText: true,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Password',
                     hintText: 'Enter secure password'),
@@ -56,6 +84,8 @@ class _LoginPageState extends State<LoginPage> {
             TextButton(
               onPressed: () {
                 // TODO FORGOT PASSWORD SCREEN GOES HERE
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (_) => AccountRecoverPage()));
               },
               child: const Text(
                 'Forgot Password',
@@ -69,8 +99,12 @@ class _LoginPageState extends State<LoginPage> {
                   color: Colors.blue, borderRadius: BorderRadius.circular(20)),
               child: TextButton(
                 onPressed: () {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => HomePage()));
+                  signIn();
+                  if (isUserAuthenticated) {
+                    // If username and password are in database, go to home page
+                    Navigator.push(
+                        context, MaterialPageRoute(builder: (_) => HomePage()));
+                  }
                 },
                 child: const Text(
                   'Login',
@@ -81,10 +115,56 @@ class _LoginPageState extends State<LoginPage> {
             const SizedBox(
               height: 130,
             ),
-            const Text('New User? Create Account')
+            TextButton(
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (_) => AccountCreationPage()));
+              },
+              child: const Text(
+                'New User? Create Account!',
+                style: TextStyle(color: Colors.blue, fontSize: 15),
+              ),
+            ),
           ],
         ),
       ),
     );
   }
+
+  Future signIn() async {
+    const errorMessage = SnackBar(
+      content: Text('Incorrect format for username or password'),
+      behavior: SnackBarBehavior.floating,
+      margin: EdgeInsets.only(bottom: 50.0, left: 50.0, right: 50.0),
+    );
+
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: _email,
+        password: _password,
+      );
+      isUserAuthenticated = true;
+    } on FirebaseAuthException {
+      ScaffoldMessenger.of(context).showSnackBar(errorMessage);
+    }
+
+    // await FirebaseAuth.instance.signInWithEmailAndPassword(
+    //   email: _email,
+    //   password: _password,
+    // );
+  }
 }
+
+/*
+on FirebaseAuthException catch (e) {
+                      if (e.code == 'weak-password') {
+                        print('The password provided is too weak.');
+                      } else if (e.code == 'email-already-in-use') {
+                        print('The account already exists for that email.');
+                      } else {
+                        print(e.message);
+                      }
+                    } catch (e) {
+                      print(e);
+                    }
+*/

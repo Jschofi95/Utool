@@ -1,20 +1,55 @@
 import 'package:flutter/material.dart';
+import 'package:utool/item/item_data.dart';
+import 'successfulpay.dart';
 
-class Payment extends StatefulWidget {
-  const Payment({Key? key}) : super(key: key);
+class Payment extends StatelessWidget {
+  final ItemData item;
+  const Payment({Key? key, required this.item}) : super(key: key);
 
-  @override
-  PaymentPage createState() => PaymentPage();
-}
-
-class PaymentPage extends State<Payment> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Detail for the payment'),
+        title: Text('Payment Detail'),
       ),
-      body: Text('total Price: 521'),
+      body: Center(
+          child: Column(
+        children: <Widget>[
+          Text(
+            'Rent Price: ${item.price}',
+            style: const TextStyle(fontSize: 28, color: Colors.red),
+          ),
+          //10% for tax price
+          Text(
+            'Tax Price: ${item.price * 0.1}',
+            style: const TextStyle(fontSize: 28, color: Colors.red),
+          ),
+          Text(
+            'Total Price: ${1.1 * item.price}',
+            style: const TextStyle(fontSize: 28, color: Colors.red),
+          ),
+          //add a empty line
+          const Text(
+            ' ',
+          ),
+          Container(
+            height: 50,
+            width: 250,
+            decoration: BoxDecoration(
+                color: Colors.blue, borderRadius: BorderRadius.circular(20)),
+            child: TextButton(
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (_) => SuccessfulPay()));
+              },
+              child: const Text(
+                'Pay',
+                style: TextStyle(color: Colors.white, fontSize: 25),
+              ),
+            ),
+          ),
+        ],
+      )),
 
       //It should connect to message system. Have no idea yet.
     );
