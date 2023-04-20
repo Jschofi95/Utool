@@ -3,12 +3,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 
-class profileFillingPage extends StatefulWidget {
+class profileUpdatePage extends StatefulWidget {
   @override
-  _profileFillingPageState createState() => _profileFillingPageState();
+  _profileUpdatePageState createState() => _profileUpdatePageState();
 }
 
-class _profileFillingPageState extends State<profileFillingPage> {
+class _profileUpdatePageState extends State<profileUpdatePage> {
   final _formKey = GlobalKey<FormState>();
   String _name = '';
   String _address = '';
@@ -102,7 +102,7 @@ class _profileFillingPageState extends State<profileFillingPage> {
                 ),
                 SizedBox(height: 32.0),
                 TextButton(
-                  child: Text('Save Profile'),
+                  child: Text('Update Profile'),
                   onPressed: () async {
                     if (_formKey.currentState!.validate()) {
                       await saveProfileToFirestore();

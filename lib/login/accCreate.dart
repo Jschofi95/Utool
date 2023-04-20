@@ -3,7 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:utool/login/login.dart';
 import 'package:utool/login/auth.dart';
-import 'package:utool/user/ProfilefillingPage.dart';
+import 'package:utool/user/profilefillingPage.dart';
 
 class AccountCreationPage extends StatefulWidget {
   @override
