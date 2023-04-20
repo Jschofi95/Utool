@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
+import 'package:utool/user/profileDisplayPage.dart';
 
 class profileUpdatePage extends StatefulWidget {
   @override
@@ -106,6 +107,10 @@ class _profileUpdatePageState extends State<profileUpdatePage> {
                   onPressed: () async {
                     if (_formKey.currentState!.validate()) {
                       await saveProfileToFirestore();
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => profileDisplayPage()));
                       // Navigate to the next page, if needed
                     }
                   },

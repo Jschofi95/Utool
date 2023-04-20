@@ -39,7 +39,7 @@ class _profileDisplayPageState extends State<profileDisplayPage> {
         setState(() {
           _name = userProfileData['name'];
           _address = userProfileData['address'];
-          _phoneNumber = userProfileData['phoneNumber'];
+          _phoneNumber = userProfileData['phoneNumber']?.toString();
         });
       } catch (error) {
         print('Failed to fetch profile: $error');

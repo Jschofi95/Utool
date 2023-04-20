@@ -98,8 +98,8 @@ class _LoginPageState extends State<LoginPage> {
               decoration: BoxDecoration(
                   color: Colors.blue, borderRadius: BorderRadius.circular(20)),
               child: TextButton(
-                onPressed: () {
-                  signIn();
+                onPressed: () async {
+                  await signIn();
                   if (isUserAuthenticated) {
                     // If username and password are in database, go to home page
                     Navigator.push(
@@ -147,24 +147,5 @@ class _LoginPageState extends State<LoginPage> {
     } on FirebaseAuthException {
       ScaffoldMessenger.of(context).showSnackBar(errorMessage);
     }
-
-    // await FirebaseAuth.instance.signInWithEmailAndPassword(
-    //   email: _email,
-    //   password: _password,
-    // );
   }
 }
-
-/*
-on FirebaseAuthException catch (e) {
-                      if (e.code == 'weak-password') {
-                        print('The password provided is too weak.');
-                      } else if (e.code == 'email-already-in-use') {
-                        print('The account already exists for that email.');
-                      } else {
-                        print(e.message);
-                      }
-                    } catch (e) {
-                      print(e);
-                    }
-*/
