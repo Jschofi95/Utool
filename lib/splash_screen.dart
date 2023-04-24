@@ -25,7 +25,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset(
-                    'assets/flutter_logo.png', // Replace with your own image asset
+                    'assets/uTools_logo.png', // Replace with your own image asset
                     width: 150,
                   ),
                   SizedBox(height: 20),
