@@ -4,14 +4,19 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:utool/homepage/homepage.dart';
 import 'package:utool/item/item_data.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class PostReview extends StatelessWidget {
   final Map<String, dynamic> item;
 
   PostReview({Key? key, required this.item}) : super(key: key);
 
-  CollectionReference itemsCollection =
-      FirebaseFirestore.instance.collection('Items');
+  final String userId = FirebaseAuth.instance.currentUser!.uid;
+
+  CollectionReference itemsCollection(FirebaseFirestore firestore) {
+    // Modify the collection reference to include the user's ID
+    return firestore.collection('users').doc(userId).collection('Items');
+  }
 
   TextStyle defaultHintStyle() {
     return TextStyle(
@@ -20,12 +25,14 @@ class PostReview extends StatelessWidget {
         fontSize: 12.0);
   }
 
-  Future<void> addItem() {
-    return itemsCollection.add(item);
+  Future<void> addItem(FirebaseFirestore firestore) {
+    return itemsCollection(firestore).add(item);
   }
 
   @override
   Widget build(BuildContext context) {
+    final firestore = FirebaseFirestore.instance;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Review'),
@@ -136,7 +143,7 @@ class PostReview extends StatelessWidget {
                         child: ElevatedButton(
                           onPressed: () {
                             try {
-                              addItem();
+                              addItem(firestore);
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(builder: (_) => HomePage()),
