@@ -29,97 +29,60 @@ class AppBarLayouts {
       ),
       actions: <Widget>[
         IconButton(
-          icon: Icon(Icons.search),
+          icon: const Icon(Icons.search),
           onPressed: () {
             showSearch(context: context, delegate: SearchBar());
           },
         ),
-
-        /*
         PopupMenuButton(
           itemBuilder: (BuildContext context) {
             return [
               PopupMenuItem(
-                value: 1,
-                child: SizedBox(child: Text('Sort By')),
-              ),
+                  child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.black,
+                          minimumSize: const Size.fromHeight(40)),
+                      onPressed: () {},
+                      child: PopupMenuButton(
+                          itemBuilder: (BuildContext context) {
+                            return [
+                              const PopupMenuItem(
+                                value: 1,
+                                child: SizedBox(child: Text('\$ - \$\$\$')),
+                              ),
+                              const PopupMenuItem(
+                                value: 2,
+                                child: SizedBox(child: Text('\$\$\$ - \$')),
+                              ),
+                              const PopupMenuItem(
+                                value: 3,
+                                child:
+                                    SizedBox(child: Text('Closest - Furthest')),
+                              ),
+                              const PopupMenuItem(
+                                value: 4,
+                                child: SizedBox(
+                                    child: Text('Top Rated - Worst Rated')),
+                              ),
+                            ];
+                          },
+                          child: const Text('Sort By')))),
               PopupMenuItem(
-                value: 2,
-                child: SizedBox(child: Text('\$ - \$\$\$')),
-              ),
-              PopupMenuItem(
-                value: 3,
-                child: SizedBox(child: Text('\$\$\$ - \$')),
-              ),
-              PopupMenuItem(
-                value: 4,
-                child: SizedBox(child: Text('Closest - Furthest')),
-              ),
-              PopupMenuItem(
-                value: 5,
-                child: SizedBox(child: Text('Top Rated - Worst Rated')),
-              ),
-              
-              
+                  child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.black,
+                    minimumSize: const Size.fromHeight(40)),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const Filter()),
+                  );
+                },
+                child: const Text('Filter'),
+              )),
             ];
           },
-          icon: Icon(Icons.sort),
-        ),
-        */
-
-        PopupMenuButton(
-          itemBuilder: (BuildContext context) {
-            return [
-              PopupMenuItem(
-                  child: PopupMenuButton(
-                      itemBuilder: (BuildContext context) {
-                        return [
-                          PopupMenuItem(
-                            value: 1,
-                            child: SizedBox(child: Text('\$ - \$\$\$')),
-                          ),
-                          PopupMenuItem(
-                            value: 2,
-                            child: SizedBox(child: Text('\$\$\$ - \$')),
-                          ),
-                          PopupMenuItem(
-                            value: 3,
-                            child: SizedBox(child: Text('Closest - Furthest')),
-                          ),
-                          PopupMenuItem(
-                            value: 4,
-                            child: SizedBox(
-                                child: Text('Top Rated - Worst Rated')),
-                          ),
-                        ];
-                      },
-                      child: Text('Sort By'))),
-              PopupMenuItem(
-                  /*
-                  child: PopupMenuButton(
-                      itemBuilder: (BuildContext context) {
-                        return [
-                          PopupMenuItem(
-                            value: 1,
-                            child: SizedBox(child: Text('Sort By')),
-                            
-                          ),
-                        ];
-                      },
-                      */
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const Filter()),
-                    );
-                    //need to figure out how to send user to filter page
-                  },
-                  child: Text(
-                    'Filter',
-                  )),
-            ];
-          },
-          icon: Icon(Icons.sort_rounded),
+          icon: const Icon(Icons.sort_rounded),
         )
       ],
       backgroundColor: Colors.orangeAccent,
@@ -138,7 +101,7 @@ class SearchBar extends SearchDelegate<String> {
   List<Widget> buildActions(BuildContext context) {
     return [
       IconButton(
-        icon: Icon(Icons.clear),
+        icon: const Icon(Icons.clear),
         onPressed: () {
           query = '';
         },
@@ -149,7 +112,7 @@ class SearchBar extends SearchDelegate<String> {
   @override
   Widget buildLeading(BuildContext context) {
     return IconButton(
-      icon: Icon(Icons.arrow_back),
+      icon: const Icon(Icons.arrow_back),
       onPressed: () {
         close(context, '');
       },

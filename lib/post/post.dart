@@ -174,11 +174,12 @@ class _Post extends State<Post> {
         !containsOnlyLettersAndNumbers(addressLine1Controller.text)) {
       print('Address Line 1 incorrect format');
       return 7;
-    } else if (addressLine2Controller.text.isNotEmpty &&
+    } /* else if (addressLine2Controller.text.isNotEmpty &&
         !containsOnlyLettersAndNumbers(addressLine2Controller.text)) {
       print('Address line 2 is incorrect format');
       return 8;
-    } else if (cityController.text.isEmpty ||
+    } */
+    else if (cityController.text.isEmpty ||
         !containsOnlyCharacters(cityController.text)) {
       print('City controller is incorrect format');
       return 9;
@@ -219,10 +220,10 @@ class _Post extends State<Post> {
         child: Column(
           children: <Widget>[
             //TYPE
-            Text(
+            /*Text(
               'Tool Type',
               style: const TextStyle(fontSize: 20, color: Colors.blue),
-            ),
+            ),*/
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               child: TextField(
@@ -230,7 +231,7 @@ class _Post extends State<Post> {
                 decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     //labelText: 'Tool Type',
-                    hintText: 'Enter type'),
+                    labelText: 'Tool Type'),
               ),
             ),
 
@@ -246,43 +247,43 @@ class _Post extends State<Post> {
             //   ),
             // ),
             //Brand
-            Text(
+            /*Text(
               'Brand',
               style: const TextStyle(fontSize: 20, color: Colors.blue),
-            ),
+            ),*/
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               child: TextField(
                 controller: brandController,
                 decoration: InputDecoration(
-                    border: OutlineInputBorder(), hintText: 'Enter brand'),
+                    border: OutlineInputBorder(), labelText: 'Brand'),
               ),
             ),
             //Model
-            Text(
+            /*Text(
               'Model',
               style: const TextStyle(fontSize: 20, color: Colors.blue),
-            ),
+            ),*/
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               child: TextField(
                 controller: modelController,
                 decoration: InputDecoration(
-                    border: OutlineInputBorder(), hintText: 'Enter Model'),
+                    border: OutlineInputBorder(), labelText: 'Model'),
               ),
             ),
 
             //price
-            Text(
+            /*Text(
               'Price',
               style: const TextStyle(fontSize: 20, color: Colors.blue),
-            ),
+            ),*/
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               child: TextField(
                 controller: priceController,
                 decoration: InputDecoration(
-                    border: OutlineInputBorder(), hintText: 'Enter price'),
+                    border: OutlineInputBorder(), labelText: 'Price'),
               ),
             ),
 
@@ -302,14 +303,15 @@ class _Post extends State<Post> {
               ),
             ),*/
             //price interval
-            Text(
+            /*Text(
               'Price Interval',
               style: const TextStyle(fontSize: 20, color: Colors.blue),
-            ),
+            ),*/
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               child: DropdownButtonFormField<String>(
                 decoration: InputDecoration(
+                  labelText: 'Price Interval',
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),
                     borderSide: BorderSide(
@@ -345,28 +347,29 @@ class _Post extends State<Post> {
             ),
 
             //condition
-            Text(
+            /*Text(
               'Condition',
               style: const TextStyle(fontSize: 20, color: Colors.blue),
-            ),
+            ),*/
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               child: TextField(
                 controller: conditionController,
                 decoration: InputDecoration(
-                    border: OutlineInputBorder(), hintText: 'Enter Condition'),
+                    border: OutlineInputBorder(), labelText: 'Condition'),
               ),
             ),
 
             //UseType
-            Text(
+            /*Text(
               'UseType',
               style: const TextStyle(fontSize: 20, color: Colors.blue),
-            ),
+            ),*/
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               child: DropdownButtonFormField<String>(
                 decoration: InputDecoration(
+                  labelText: 'User Type',
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),
                     borderSide: BorderSide(
@@ -440,55 +443,56 @@ class _Post extends State<Post> {
             ),*/
 
             //address1
-            Text(
+            /*Text(
               'Address 1',
               style: const TextStyle(fontSize: 20, color: Colors.blue),
-            ),
+            ),*/
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               child: TextField(
                 controller: addressLine1Controller,
                 decoration: InputDecoration(
-                    border: OutlineInputBorder(), hintText: 'Enter address'),
+                    border: OutlineInputBorder(), labelText: 'Address'),
               ),
             ),
             //address2
-            Text(
+            /*Text(
               'Address 2',
               style: const TextStyle(fontSize: 20, color: Colors.blue),
-            ),
+            ),*/
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               child: TextField(
                 controller: addressLine2Controller,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(),
-                    hintText: 'Enter address OPTIONAL'),
+                    labelText: 'Address 2 OPTIONAL'),
               ),
             ),
             //city
-            Text(
+            /*Text(
               'City',
               style: const TextStyle(fontSize: 20, color: Colors.blue),
-            ),
+            ),*/
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               child: TextField(
                 controller: cityController,
                 decoration: InputDecoration(
-                    border: OutlineInputBorder(), hintText: 'Enter City'),
+                    border: OutlineInputBorder(), labelText: 'City'),
               ),
             ),
 
             //States
-            Text(
+            /*Text(
               'State',
               style: const TextStyle(fontSize: 20, color: Colors.blue),
-            ),
+            ),*/
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               child: DropdownButtonFormField<String>(
                 decoration: InputDecoration(
+                  labelText: 'State',
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),
                     borderSide: BorderSide(
@@ -732,38 +736,38 @@ class _Post extends State<Post> {
             ),*/
 
             //zipCode
-            Text(
+            /*Text(
               'Zip Code',
               style: const TextStyle(fontSize: 20, color: Colors.blue),
-            ),
+            ),*/
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               child: TextField(
                 controller: zipCodeController,
                 decoration: InputDecoration(
-                    border: OutlineInputBorder(), hintText: 'Enter zip code'),
+                    border: OutlineInputBorder(), labelText: 'Zip Code'),
               ),
             ),
 
             //hours
-            Text(
+            /*Text(
               'Hours',
               style: const TextStyle(fontSize: 20, color: Colors.blue),
-            ),
+            ),*/
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               child: TextField(
                 controller: hoursController,
                 decoration: InputDecoration(
-                    border: OutlineInputBorder(), hintText: 'Enter hours'),
+                    border: OutlineInputBorder(), labelText: 'Hours'),
               ),
             ),
 
             //description
-            Text(
+            /*Text(
               'Description',
               style: const TextStyle(fontSize: 20, color: Colors.blue),
-            ),
+            ),*/
             Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                 child: SizedBox(
@@ -771,8 +775,7 @@ class _Post extends State<Post> {
                   child: TextField(
                     controller: descriptionController,
                     decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        hintText: 'Enter discription'),
+                        border: OutlineInputBorder(), labelText: 'Discription'),
                   ),
                 )),
 

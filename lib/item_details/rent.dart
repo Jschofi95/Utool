@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:utool/item/item_data.dart';
 import 'package:utool/payment/payment.dart';
+import 'package:intl/intl.dart';
 
 class Rent extends StatelessWidget {
   final ItemData item;
+  Rent({Key? key, required this.item}) : super(key: key);
 
-  const Rent({Key? key, required this.item}) : super(key: key);
+  final now = DateTime.now();
+  //DateTime deliveryDate = now.add(Duration(days: 2));
 
   @override
   Widget build(BuildContext context) {
+    final now = DateTime.now();
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Rent'),
@@ -21,8 +26,8 @@ class Rent extends StatelessWidget {
             'The Delivery date:',
             style: TextStyle(fontSize: 28, color: Colors.red),
           ),
-          const Text(
-            '03/10/2023',
+          Text(
+            '${DateFormat('MMMM d, yyyy').format(now)}',
             style: TextStyle(fontSize: 24, color: Colors.red),
           ),
           const Text(
