@@ -14,6 +14,9 @@ class _profileDisplayPageState extends State<profileDisplayPage> {
   String? _name;
   String? _address;
   String? _phoneNumber;
+  String? _state;
+  String? _city;
+  String? _zipCode;
 
   @override
   void initState() {
@@ -39,6 +42,9 @@ class _profileDisplayPageState extends State<profileDisplayPage> {
         setState(() {
           _name = userProfileData['name'];
           _address = userProfileData['address'];
+          _state = userProfileData['state'];
+          _zipCode = userProfileData['zipCode'];
+          _city = userProfileData['city'];
           _phoneNumber = userProfileData['phoneNumber']?.toString();
         });
       } catch (error) {
@@ -63,6 +69,12 @@ class _profileDisplayPageState extends State<profileDisplayPage> {
             _buildProfileField('Address', _address),
             SizedBox(height: 16.0),
             _buildProfileField('Phone Number', _phoneNumber),
+            SizedBox(height: 16.0),
+            _buildProfileField('State', _state),
+            SizedBox(height: 16.0),
+            _buildProfileField('City', _city),
+            SizedBox(height: 16.0),
+            _buildProfileField('Zip code', _zipCode),
             Spacer(), // This will push the button to the bottom
             Center(
               child: ElevatedButton(

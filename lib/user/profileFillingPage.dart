@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
+import 'package:utool/login/login.dart';
 
 class profileFillingPage extends StatefulWidget {
   @override
@@ -13,6 +14,9 @@ class _profileFillingPageState extends State<profileFillingPage> {
   String _name = '';
   String _address = '';
   String _phoneNumber = '';
+  String _state = '';
+  String _city = '';
+  String _zipCode = '';
 
   Future<void> saveProfileToFirestore() async {
     // Get the current user
@@ -29,6 +33,9 @@ class _profileFillingPageState extends State<profileFillingPage> {
         'name': _name,
         'address': _address,
         'phoneNumber': _phoneNumber,
+        'state': _state,
+        'city': _city,
+        'zipCode': _zipCode,
       }, SetOptions(merge: true)).catchError((error) {
         print('Failed to save profile: $error');
       });
@@ -100,12 +107,71 @@ class _profileFillingPageState extends State<profileFillingPage> {
                     });
                   },
                 ),
+                SizedBox(height: 16.0),
+                TextFormField(
+                  decoration: InputDecoration(labelText: 'State'),
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Please enter your state';
+                    }
+                    return null;
+                  },
+                  onChanged: (value) {
+                    setState(() {
+                      _state = value;
+                    });
+                  },
+                ),
+                SizedBox(height: 16.0),
+                TextFormField(
+                  decoration: InputDecoration(labelText: 'City'),
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Please enter your city';
+                    }
+                    return null;
+                  },
+                  onChanged: (value) {
+                    setState(() {
+                      _city = value;
+                    });
+                  },
+                ),
+                SizedBox(height: 16.0),
+                TextFormField(
+                  decoration: InputDecoration(labelText: 'Zip Code'),
+                  keyboardType: TextInputType.number,
+                  inputFormatters: [
+                    FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+                    LengthLimitingTextInputFormatter(5),
+                  ],
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Please enter your zip code';
+                    } else if (value.length != 5) {
+                      return 'Please enter a valid 5-digit zip code';
+                    }
+                    return null;
+                  },
+                  onChanged: (value) {
+                    setState(() {
+                      _zipCode = value;
+                    });
+                  },
+                ),
                 SizedBox(height: 32.0),
                 TextButton(
                   child: Text('Save Profile'),
                   onPressed: () async {
                     if (_formKey.currentState!.validate()) {
                       await saveProfileToFirestore();
+                      // Print the success message
+                      print('Profile Saved Successfully');
+
+                      // Navigate to the login page
+                      Navigator.pushReplacement(context,
+                          MaterialPageRoute(builder: (context) => LoginPage()));
+
                       // Navigate to the next page, if needed
                     }
                   },
