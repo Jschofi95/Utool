@@ -25,7 +25,7 @@ class Payment extends StatelessWidget {
             style: const TextStyle(fontSize: 28, color: Colors.red),
           ),
           Text(
-            'Total Price: ${1.1 * item.price}',
+            'Total Price: ${(1.1 * item.price).toStringAsFixed(2)}',
             style: const TextStyle(fontSize: 28, color: Colors.red),
           ),
           //add a empty line
